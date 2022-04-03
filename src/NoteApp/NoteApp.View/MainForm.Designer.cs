@@ -29,16 +29,27 @@ namespace NoteApp.View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitВыйтиИзПриложенияAltF4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ShowComboBox = new System.Windows.Forms.ComboBox();
+            this.ShowLabel = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.CategoryLabel = new System.Windows.Forms.Label();
+            this.WorkLabel = new System.Windows.Forms.Label();
+            this.CreatedLabel = new System.Windows.Forms.Label();
+            this.Created = new System.Windows.Forms.ComboBox();
+            this.MoifiedComboBox = new System.Windows.Forms.ComboBox();
+            this.ModifiedLabel = new System.Windows.Forms.Label();
+            this.TitalLabel = new System.Windows.Forms.Label();
+            this.MainRichTextBox = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,14 +81,6 @@ namespace NoteApp.View
             this.exitВыйтиИзПриложенияAltF4ToolStripMenuItem.Size = new System.Drawing.Size(351, 26);
             this.exitВыйтиИзПриложенияAltF4ToolStripMenuItem.Text = "Exit (Выйти из приложения – Alt+F4) ";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(271, 101);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(550, 390);
-            this.textBox1.TabIndex = 2;
-            // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -88,6 +91,24 @@ namespace NoteApp.View
             this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
             this.editToolStripMenuItem.Text = "Edit";
             // 
+            // addNoteToolStripMenuItem
+            // 
+            this.addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
+            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.addNoteToolStripMenuItem.Text = "Add Note ";
+            // 
+            // editNoteToolStripMenuItem
+            // 
+            this.editNoteToolStripMenuItem.Name = "editNoteToolStripMenuItem";
+            this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.editNoteToolStripMenuItem.Text = "Edit Note ";
+            // 
+            // removeNoteToolStripMenuItem
+            // 
+            this.removeNoteToolStripMenuItem.Name = "removeNoteToolStripMenuItem";
+            this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.removeNoteToolStripMenuItem.Text = "Remove Note";
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -96,40 +117,133 @@ namespace NoteApp.View
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // addNoteToolStripMenuItem
-            // 
-            this.addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
-            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.addNoteToolStripMenuItem.Text = "Add Note ";
-            // 
-            // editNoteToolStripMenuItem
-            // 
-            this.editNoteToolStripMenuItem.Name = "editNoteToolStripMenuItem";
-            this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.editNoteToolStripMenuItem.Text = "Edit Note ";
-            // 
-            // removeNoteToolStripMenuItem
-            // 
-            this.removeNoteToolStripMenuItem.Name = "removeNoteToolStripMenuItem";
-            this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.removeNoteToolStripMenuItem.Text = "Remove Note";
-            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // ShowComboBox
+            // 
+            this.ShowComboBox.FormattingEnabled = true;
+            this.ShowComboBox.Location = new System.Drawing.Point(134, 35);
+            this.ShowComboBox.Name = "ShowComboBox";
+            this.ShowComboBox.Size = new System.Drawing.Size(154, 24);
+            this.ShowComboBox.TabIndex = 3;
+            this.ShowComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // ShowLabel
+            // 
+            this.ShowLabel.AutoSize = true;
+            this.ShowLabel.Location = new System.Drawing.Point(17, 38);
+            this.ShowLabel.Name = "ShowLabel";
+            this.ShowLabel.Size = new System.Drawing.Size(101, 16);
+            this.ShowLabel.TabIndex = 4;
+            this.ShowLabel.Text = "Show Category:";
+            this.ShowLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(20, 70);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(268, 386);
+            this.listView1.TabIndex = 6;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // CategoryLabel
+            // 
+            this.CategoryLabel.AutoSize = true;
+            this.CategoryLabel.Location = new System.Drawing.Point(308, 69);
+            this.CategoryLabel.Name = "CategoryLabel";
+            this.CategoryLabel.Size = new System.Drawing.Size(65, 16);
+            this.CategoryLabel.TabIndex = 7;
+            this.CategoryLabel.Text = "Category:";
+            // 
+            // WorkLabel
+            // 
+            this.WorkLabel.AutoSize = true;
+            this.WorkLabel.Location = new System.Drawing.Point(370, 69);
+            this.WorkLabel.Name = "WorkLabel";
+            this.WorkLabel.Size = new System.Drawing.Size(39, 16);
+            this.WorkLabel.TabIndex = 8;
+            this.WorkLabel.Text = "Work";
+            // 
+            // CreatedLabel
+            // 
+            this.CreatedLabel.AutoSize = true;
+            this.CreatedLabel.Location = new System.Drawing.Point(308, 97);
+            this.CreatedLabel.Name = "CreatedLabel";
+            this.CreatedLabel.Size = new System.Drawing.Size(58, 16);
+            this.CreatedLabel.TabIndex = 9;
+            this.CreatedLabel.Text = "Created:";
+            // 
+            // Created
+            // 
+            this.Created.FormattingEnabled = true;
+            this.Created.Location = new System.Drawing.Point(372, 94);
+            this.Created.Name = "Created";
+            this.Created.Size = new System.Drawing.Size(121, 24);
+            this.Created.TabIndex = 10;
+            // 
+            // MoifiedComboBox
+            // 
+            this.MoifiedComboBox.FormattingEnabled = true;
+            this.MoifiedComboBox.Location = new System.Drawing.Point(584, 94);
+            this.MoifiedComboBox.Name = "MoifiedComboBox";
+            this.MoifiedComboBox.Size = new System.Drawing.Size(120, 24);
+            this.MoifiedComboBox.TabIndex = 11;
+            // 
+            // ModifiedLabel
+            // 
+            this.ModifiedLabel.AutoSize = true;
+            this.ModifiedLabel.Location = new System.Drawing.Point(516, 97);
+            this.ModifiedLabel.Name = "ModifiedLabel";
+            this.ModifiedLabel.Size = new System.Drawing.Size(62, 16);
+            this.ModifiedLabel.TabIndex = 12;
+            this.ModifiedLabel.Text = "Modified:";
+            this.ModifiedLabel.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // TitalLabel
+            // 
+            this.TitalLabel.AutoSize = true;
+            this.TitalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TitalLabel.Location = new System.Drawing.Point(308, 33);
+            this.TitalLabel.Name = "TitalLabel";
+            this.TitalLabel.Size = new System.Drawing.Size(346, 25);
+            this.TitalLabel.TabIndex = 13;
+            this.TitalLabel.Text = "Требование к оформлению кода";
+            // 
+            // MainRichTextBox
+            // 
+            this.MainRichTextBox.Location = new System.Drawing.Point(308, 133);
+            this.MainRichTextBox.Name = "MainRichTextBox";
+            this.MainRichTextBox.Size = new System.Drawing.Size(589, 371);
+            this.MainRichTextBox.TabIndex = 14;
+            this.MainRichTextBox.Text = resources.GetString("MainRichTextBox.Text");
             // 
             // MainForm
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(897, 503);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.MainRichTextBox);
+            this.Controls.Add(this.TitalLabel);
+            this.Controls.Add(this.ModifiedLabel);
+            this.Controls.Add(this.MoifiedComboBox);
+            this.Controls.Add(this.Created);
+            this.Controls.Add(this.CreatedLabel);
+            this.Controls.Add(this.WorkLabel);
+            this.Controls.Add(this.CategoryLabel);
+            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.ShowLabel);
+            this.Controls.Add(this.ShowComboBox);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "NoteApp";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -142,13 +256,23 @@ namespace NoteApp.View
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitВыйтиИзПриложенияAltF4ToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editNoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeNoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ComboBox ShowComboBox;
+        private System.Windows.Forms.Label ShowLabel;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label CategoryLabel;
+        private System.Windows.Forms.Label WorkLabel;
+        private System.Windows.Forms.Label CreatedLabel;
+        private System.Windows.Forms.ComboBox Created;
+        private System.Windows.Forms.ComboBox MoifiedComboBox;
+        private System.Windows.Forms.Label ModifiedLabel;
+        private System.Windows.Forms.Label TitalLabel;
+        private System.Windows.Forms.RichTextBox MainRichTextBox;
     }
 }
 
