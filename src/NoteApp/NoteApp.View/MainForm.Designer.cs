@@ -50,6 +50,9 @@ namespace NoteApp.View
             this.ModifiedLabel = new System.Windows.Forms.Label();
             this.TitalLabel = new System.Windows.Forms.Label();
             this.MainRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.AddButton = new System.Windows.Forms.Button();
+            this.EditButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,19 +97,21 @@ namespace NoteApp.View
             // addNoteToolStripMenuItem
             // 
             this.addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
-            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.addNoteToolStripMenuItem.Text = "Add Note ";
+            this.addNoteToolStripMenuItem.Click += new System.EventHandler(this.addNoteToolStripMenuItem_Click);
             // 
             // editNoteToolStripMenuItem
             // 
             this.editNoteToolStripMenuItem.Name = "editNoteToolStripMenuItem";
-            this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.editNoteToolStripMenuItem.Text = "Edit Note ";
+            this.editNoteToolStripMenuItem.Click += new System.EventHandler(this.editNoteToolStripMenuItem_Click);
             // 
             // removeNoteToolStripMenuItem
             // 
             this.removeNoteToolStripMenuItem.Name = "removeNoteToolStripMenuItem";
-            this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.removeNoteToolStripMenuItem.Text = "Remove Note";
             // 
             // helpToolStripMenuItem
@@ -120,8 +125,9 @@ namespace NoteApp.View
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // ShowComboBox
             // 
@@ -219,9 +225,47 @@ namespace NoteApp.View
             // 
             this.MainRichTextBox.Location = new System.Drawing.Point(308, 133);
             this.MainRichTextBox.Name = "MainRichTextBox";
-            this.MainRichTextBox.Size = new System.Drawing.Size(589, 371);
+            this.MainRichTextBox.Size = new System.Drawing.Size(577, 365);
             this.MainRichTextBox.TabIndex = 14;
             this.MainRichTextBox.Text = resources.GetString("MainRichTextBox.Text");
+            this.MainRichTextBox.TextChanged += new System.EventHandler(this.MainRichTextBox_TextChanged);
+            // 
+            // AddButton
+            // 
+            this.AddButton.BackColor = System.Drawing.Color.Transparent;
+            this.AddButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddButton.BackgroundImage")));
+            this.AddButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddButton.FlatAppearance.BorderSize = 0;
+            this.AddButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AddButton.Location = new System.Drawing.Point(20, 468);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(30, 30);
+            this.AddButton.TabIndex = 15;
+            this.AddButton.UseVisualStyleBackColor = false;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            // 
+            // EditButton
+            // 
+            this.EditButton.BackColor = System.Drawing.Color.Transparent;
+            this.EditButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditButton.BackgroundImage")));
+            this.EditButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.EditButton.Location = new System.Drawing.Point(56, 468);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(30, 30);
+            this.EditButton.TabIndex = 16;
+            this.EditButton.UseVisualStyleBackColor = false;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.BackColor = System.Drawing.Color.Transparent;
+            this.DeleteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteButton.BackgroundImage")));
+            this.DeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DeleteButton.Location = new System.Drawing.Point(92, 468);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(30, 30);
+            this.DeleteButton.TabIndex = 17;
+            this.DeleteButton.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
@@ -229,6 +273,9 @@ namespace NoteApp.View
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(897, 503);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.EditButton);
+            this.Controls.Add(this.AddButton);
             this.Controls.Add(this.MainRichTextBox);
             this.Controls.Add(this.TitalLabel);
             this.Controls.Add(this.ModifiedLabel);
@@ -241,8 +288,10 @@ namespace NoteApp.View
             this.Controls.Add(this.ShowLabel);
             this.Controls.Add(this.ShowComboBox);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
+            this.Text = "NoteApp";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -273,6 +322,9 @@ namespace NoteApp.View
         private System.Windows.Forms.Label ModifiedLabel;
         private System.Windows.Forms.Label TitalLabel;
         private System.Windows.Forms.RichTextBox MainRichTextBox;
+        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button EditButton;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }
 

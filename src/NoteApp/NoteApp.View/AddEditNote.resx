@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum id venenatis. Et ultrices neque ornare aenean. Velit ut tortor pretium viverra suspendisse potenti nullam ac tortor. Auctor augue mauris augue neque gravida in fermentum et sollicitudin. Lorem donec massa sapien faucibus et molestie ac. Aenean euismod elementum nisi quis eleifend quam. Dignissim enim sit amet venenatis urna cursus. Vitae elementum curabitur vitae nunc sed velit dignissim sodales. Sed enim ut sem viverra aliquet eget. Morbi blandit cursus risus at ultrices mi tempus imperdiet.
+
+In metus vulputate eu scelerisque. Donec enim diam vulputate ut. Magnis dis parturient montes nascetur. Leo a diam sollicitudin tempor. Enim facilisis gravida neque convallis a cras semper. Mi ipsum faucibus vitae aliquet nec. Id porta nibh venenatis cras sed felis eget. Dui id ornare arcu odio ut sem nulla. Laoreet id donec ultrices tincidunt arcu non sodales. Maecenas pharetra convallis posuere morbi leo. Tellus id interdum velit laoreet id donec. Volutpat blandit aliquam etiam erat velit. Varius quam quisque id diam vel. Diam maecenas sed enim ut sem viverra aliquet. Suspendisse sed nisi lacus sed viverra tellus in hac. Malesuada nunc vel risus commodo viverra. Nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc. Sit amet justo donec enim diam vulputate.
+
+Ullamcorper malesuada proin libero nunc consequat interdum. Amet nulla facilisi morbi tempus iaculis urna id volutpat lacus. Aenean et tortor at risus viverra adipiscing at in. Aliquam sem et tortor consequat. Quisque non tellus orci ac. Pulvinar sapien et ligula ullamcorper. Quis viverra nibh cras pulvinar mattis nunc sed blandit libero. Vel risus commodo viverra maecenas accumsan. Tellus elementum sagittis vitae et leo. Venenatis a condimentum vitae sapien pellentesque. Fermentum iaculis eu non diam phasellus vestibulum. Pretium viverra suspendisse potenti nullam ac tortor vitae. Eu non diam phasellus vestibulum. Odio facilisis mauris sit amet. Habitant morbi tristique senectus et netus et malesuada. Mollis aliquam ut porttitor leo a diam. At risus viverra adipiscing at in.
+
+Dictum non consectetur a erat nam at lectus. Commodo odio aenean sed adipiscing. Elementum nibh tellus molestie nunc non blandit. Consectetur a erat nam at lectus. Scelerisque purus semper eget duis at tellus at urna condimentum. Porttitor rhoncus dolor purus non enim. Sit amet venenatis urna cursus eget. Sit amet purus gravida quis blandit turpis. Convallis tellus id interdum velit laoreet. Viverra aliquet eget sit amet tellus cras adipiscing. Magna sit amet purus gravida quis blandit turpis. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Semper risus in hendrerit gravida rutrum quisque.
+
+Quis risus sed vulputate odio ut enim. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat. Erat imperdiet sed euismod nisi porta lorem. Velit aliquet sagittis id consectetur purus. Id interdum velit laoreet id donec ultrices tincidunt arcu. Vulputate odio ut enim blandit volutpat maecenas. In nisl nisi scelerisque eu ultrices. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit. Purus in mollis nunc sed. Congue nisi vitae suscipit tellus mauris a diam maecenas sed.
+
+Posuere morbi leo urna molestie at elementum. Adipiscing at in tellus integer feugiat scelerisque varius. Maecenas ultricies mi eget mauris pharetra et ultrices. Id diam maecenas ultricies mi eget mauris pharetra. Nec feugiat in fermentum posuere urna nec tincidunt. Dolor sit amet consectetur adipiscing. Sollicitudin aliquam ultrices sagittis orci a. Nullam non nisi est sit amet facilisis magna. Pellentesque sit amet porttitor eget dolor. A scelerisque purus semper eget duis. Amet consectetur adipiscing elit pellentesque.
+
+Mi eget mauris pharetra et ultrices neque. Netus et malesuada fames ac turpis egestas sed tempus. Cras adipiscing enim eu turpis egestas pretium aenean pharetra. Viverra vitae congue eu consequat ac felis donec et odio. Sapien faucibus et molestie ac feugiat sed lectus. Eget arcu dictum varius duis. Morbi leo urna molestie at elementum eu facilisis sed. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique. Malesuada fames ac turpis egestas integer. Morbi blandit cursus risus at ultrices. Amet facilisis magna etiam tempor orci eu lobortis. Sodales neque sodales ut etiam sit amet nisl purus.
+
+Risus feugiat in ante metus dictum at. Tempus urna et pharetra pharetra massa massa. Enim nulla aliquet porttitor lacus luctus accumsan tortor posuere. Sit amet risus nullam eget felis eget. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Viverra accumsan in nisl nisi scelerisque. Facilisis magna etiam tempor orci eu lobortis elementum nibh. Ullamcorper morbi tincidunt ornare massa. Leo urna molestie at elementum eu facilisis sed. Cras adipiscing enim eu turpis. Sit amet aliquam id diam maecenas ultricies mi eget. Sed viverra tellus in hac habitasse platea.</value>
+  </data>
+</root>
