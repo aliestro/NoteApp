@@ -51,5 +51,40 @@ namespace NoteApp.View
         {
 
         }
+
+        private void addNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddEditNote addEditNote = new AddEditNote();
+            addEditNote.Show();
+        }
+
+        private void editNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddEditNote addEditNote = new AddEditNote();
+            addEditNote.Show();
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            AddEditNote addEditNote = new AddEditNote();
+            addEditNote.Show();
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            AddEditNote addEditNote = new AddEditNote();
+            addEditNote.Show();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.Show();
+        }
+
+        private void MainRichTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
