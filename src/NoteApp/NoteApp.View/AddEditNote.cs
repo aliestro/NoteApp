@@ -17,13 +17,17 @@ namespace NoteApp.View
             InitializeComponent();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void MainGroupBox_Enter(object sender, EventArgs e)
         {
-            
-            System.Diagnostics.Process.Start("https://vk.com/kabaev_vit");
+
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void TitleTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
