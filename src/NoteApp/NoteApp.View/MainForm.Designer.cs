@@ -66,7 +66,7 @@ namespace NoteApp.View
             this.HelpToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
-            this.MainMenuStrip.Size = new System.Drawing.Size(143, 28);
+            this.MainMenuStrip.Size = new System.Drawing.Size(166, 31);
             this.MainMenuStrip.TabIndex = 0;
             this.MainMenuStrip.Text = "FileMenuStrip";
             // 
@@ -83,7 +83,7 @@ namespace NoteApp.View
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(387, 28);
             this.ExitToolStripMenuItem.Text = "Exit (Выйти из приложения – Alt+F4) ";
             // 
             // EditToolStripMenuItem
@@ -94,27 +94,27 @@ namespace NoteApp.View
             this.RemoveNoteToolStripMenuItem});
             this.EditToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(42, 24);
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(53, 27);
             this.EditToolStripMenuItem.Text = "Edit";
             // 
             // AddNoteToolStripMenuItem
             // 
             this.AddNoteToolStripMenuItem.Name = "AddNoteToolStripMenuItem";
-            this.AddNoteToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.AddNoteToolStripMenuItem.Size = new System.Drawing.Size(198, 28);
             this.AddNoteToolStripMenuItem.Text = "Add Note ";
             this.AddNoteToolStripMenuItem.Click += new System.EventHandler(this.AddNoteToolStripMenuItem_Click);
             // 
             // EditNoteToolStripMenuItem
             // 
             this.EditNoteToolStripMenuItem.Name = "EditNoteToolStripMenuItem";
-            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(198, 28);
             this.EditNoteToolStripMenuItem.Text = "Edit Note ";
             this.EditNoteToolStripMenuItem.Click += new System.EventHandler(this.EditNoteToolStripMenuItem_Click);
             // 
             // RemoveNoteToolStripMenuItem
             // 
             this.RemoveNoteToolStripMenuItem.Name = "RemoveNoteToolStripMenuItem";
-            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(198, 28);
             this.RemoveNoteToolStripMenuItem.Text = "Remove Note";
             // 
             // HelpToolStripMenuItem
@@ -123,13 +123,13 @@ namespace NoteApp.View
             this.AboutToolStripMenuItem});
             this.HelpToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
-            this.HelpToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
+            this.HelpToolStripMenuItem.Size = new System.Drawing.Size(59, 27);
             this.HelpToolStripMenuItem.Text = "Help";
             // 
             // AboutToolStripMenuItem
             // 
             this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
-            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(141, 28);
             this.AboutToolStripMenuItem.Text = "About";
             this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
@@ -140,7 +140,7 @@ namespace NoteApp.View
             this.ShowComboBox.Location = new System.Drawing.Point(134, 33);
             this.ShowComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.ShowComboBox.Name = "ShowComboBox";
-            this.ShowComboBox.Size = new System.Drawing.Size(170, 24);
+            this.ShowComboBox.Size = new System.Drawing.Size(170, 28);
             this.ShowComboBox.TabIndex = 3;
             // 
             // ShowCategoryLabel
@@ -150,7 +150,7 @@ namespace NoteApp.View
             this.ShowCategoryLabel.Location = new System.Drawing.Point(9, 38);
             this.ShowCategoryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ShowCategoryLabel.Name = "ShowCategoryLabel";
-            this.ShowCategoryLabel.Size = new System.Drawing.Size(101, 16);
+            this.ShowCategoryLabel.Size = new System.Drawing.Size(127, 20);
             this.ShowCategoryLabel.TabIndex = 4;
             this.ShowCategoryLabel.Text = "Show Category:";
             // 
@@ -163,7 +163,7 @@ namespace NoteApp.View
             this.CategoryLabel.Location = new System.Drawing.Point(319, 71);
             this.CategoryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CategoryLabel.Name = "CategoryLabel";
-            this.CategoryLabel.Size = new System.Drawing.Size(65, 16);
+            this.CategoryLabel.Size = new System.Drawing.Size(81, 20);
             this.CategoryLabel.TabIndex = 7;
             this.CategoryLabel.Text = "Category:";
             // 
@@ -176,7 +176,7 @@ namespace NoteApp.View
             this.WorkLabel.Location = new System.Drawing.Point(388, 71);
             this.WorkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.WorkLabel.Name = "WorkLabel";
-            this.WorkLabel.Size = new System.Drawing.Size(39, 16);
+            this.WorkLabel.Size = new System.Drawing.Size(48, 20);
             this.WorkLabel.TabIndex = 8;
             this.WorkLabel.Text = "Work";
             // 
@@ -190,7 +190,7 @@ namespace NoteApp.View
             this.CreatedLabel.Location = new System.Drawing.Point(319, 97);
             this.CreatedLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CreatedLabel.Name = "CreatedLabel";
-            this.CreatedLabel.Size = new System.Drawing.Size(58, 16);
+            this.CreatedLabel.Size = new System.Drawing.Size(73, 20);
             this.CreatedLabel.TabIndex = 9;
             this.CreatedLabel.Text = "Created:";
             // 
@@ -204,7 +204,7 @@ namespace NoteApp.View
             this.ModifiedLabel.Location = new System.Drawing.Point(629, 97);
             this.ModifiedLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ModifiedLabel.Name = "ModifiedLabel";
-            this.ModifiedLabel.Size = new System.Drawing.Size(62, 16);
+            this.ModifiedLabel.Size = new System.Drawing.Size(77, 20);
             this.ModifiedLabel.TabIndex = 12;
             this.ModifiedLabel.Text = "Modified:";
             // 
@@ -217,7 +217,7 @@ namespace NoteApp.View
             this.TitalLabel.Location = new System.Drawing.Point(318, 33);
             this.TitalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TitalLabel.Name = "TitalLabel";
-            this.TitalLabel.Size = new System.Drawing.Size(331, 24);
+            this.TitalLabel.Size = new System.Drawing.Size(421, 29);
             this.TitalLabel.TabIndex = 13;
             this.TitalLabel.Text = "Требование к оформлению кода";
             // 
@@ -230,6 +230,7 @@ namespace NoteApp.View
             this.MainRichTextBox.Location = new System.Drawing.Point(322, 134);
             this.MainRichTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.MainRichTextBox.Name = "MainRichTextBox";
+            this.MainRichTextBox.ReadOnly = true;
             this.MainRichTextBox.Size = new System.Drawing.Size(659, 416);
             this.MainRichTextBox.TabIndex = 14;
             this.MainRichTextBox.Text = resources.GetString("MainRichTextBox.Text");
@@ -290,7 +291,7 @@ namespace NoteApp.View
             this.CreatedDateTimePicker.Location = new System.Drawing.Point(381, 95);
             this.CreatedDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.CreatedDateTimePicker.Name = "CreatedDateTimePicker";
-            this.CreatedDateTimePicker.Size = new System.Drawing.Size(158, 22);
+            this.CreatedDateTimePicker.Size = new System.Drawing.Size(158, 26);
             this.CreatedDateTimePicker.TabIndex = 18;
             // 
             // ModifiedDateTimePicker
@@ -301,7 +302,7 @@ namespace NoteApp.View
             this.ModifiedDateTimePicker.Location = new System.Drawing.Point(695, 95);
             this.ModifiedDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.ModifiedDateTimePicker.Name = "ModifiedDateTimePicker";
-            this.ModifiedDateTimePicker.Size = new System.Drawing.Size(158, 22);
+            this.ModifiedDateTimePicker.Size = new System.Drawing.Size(158, 26);
             this.ModifiedDateTimePicker.TabIndex = 19;
             // 
             // TitleListBox
@@ -310,17 +311,17 @@ namespace NoteApp.View
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TitleListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TitleListBox.FormattingEnabled = true;
-            this.TitleListBox.ItemHeight = 16;
+            this.TitleListBox.ItemHeight = 20;
             this.TitleListBox.Location = new System.Drawing.Point(11, 69);
             this.TitleListBox.Margin = new System.Windows.Forms.Padding(2);
             this.TitleListBox.Name = "TitleListBox";
-            this.TitleListBox.Size = new System.Drawing.Size(292, 420);
+            this.TitleListBox.Size = new System.Drawing.Size(292, 404);
             this.TitleListBox.TabIndex = 20;
             // 
             // MainForm
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 561);
             this.Controls.Add(this.DeleteButton);

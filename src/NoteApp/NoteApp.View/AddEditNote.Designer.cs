@@ -51,7 +51,7 @@
             this.ModifiedLabel.Location = new System.Drawing.Point(356, 83);
             this.ModifiedLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ModifiedLabel.Name = "ModifiedLabel";
-            this.ModifiedLabel.Size = new System.Drawing.Size(62, 16);
+            this.ModifiedLabel.Size = new System.Drawing.Size(77, 20);
             this.ModifiedLabel.TabIndex = 7;
             this.ModifiedLabel.Text = "Modified:";
             // 
@@ -85,7 +85,7 @@
             this.CreatedDateTimePicker.Location = new System.Drawing.Point(85, 82);
             this.CreatedDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.CreatedDateTimePicker.Name = "CreatedDateTimePicker";
-            this.CreatedDateTimePicker.Size = new System.Drawing.Size(163, 22);
+            this.CreatedDateTimePicker.Size = new System.Drawing.Size(163, 26);
             this.CreatedDateTimePicker.TabIndex = 8;
             // 
             // CategoryComboBox
@@ -97,7 +97,7 @@
             this.CategoryComboBox.Location = new System.Drawing.Point(85, 47);
             this.CategoryComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.CategoryComboBox.Name = "CategoryComboBox";
-            this.CategoryComboBox.Size = new System.Drawing.Size(163, 24);
+            this.CategoryComboBox.Size = new System.Drawing.Size(163, 28);
             this.CategoryComboBox.TabIndex = 4;
             this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
             // 
@@ -110,7 +110,7 @@
             this.CreatedLabel.Location = new System.Drawing.Point(11, 86);
             this.CreatedLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CreatedLabel.Name = "CreatedLabel";
-            this.CreatedLabel.Size = new System.Drawing.Size(58, 16);
+            this.CreatedLabel.Size = new System.Drawing.Size(73, 20);
             this.CreatedLabel.TabIndex = 2;
             this.CreatedLabel.Text = "Created:";
             // 
@@ -122,7 +122,7 @@
             this.ModifiedDateTimePicker.Location = new System.Drawing.Point(422, 80);
             this.ModifiedDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.ModifiedDateTimePicker.Name = "ModifiedDateTimePicker";
-            this.ModifiedDateTimePicker.Size = new System.Drawing.Size(149, 22);
+            this.ModifiedDateTimePicker.Size = new System.Drawing.Size(149, 26);
             this.ModifiedDateTimePicker.TabIndex = 9;
             // 
             // TitleLable
@@ -134,7 +134,7 @@
             this.TitleLable.Location = new System.Drawing.Point(11, 16);
             this.TitleLable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TitleLable.Name = "TitleLable";
-            this.TitleLable.Size = new System.Drawing.Size(36, 16);
+            this.TitleLable.Size = new System.Drawing.Size(46, 20);
             this.TitleLable.TabIndex = 0;
             this.TitleLable.Text = "Title:";
             // 
@@ -160,7 +160,7 @@
             this.CategoryLabel.Location = new System.Drawing.Point(11, 51);
             this.CategoryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CategoryLabel.Name = "CategoryLabel";
-            this.CategoryLabel.Size = new System.Drawing.Size(65, 16);
+            this.CategoryLabel.Size = new System.Drawing.Size(81, 20);
             this.CategoryLabel.TabIndex = 1;
             this.CategoryLabel.Text = "Category:";
             // 
@@ -172,13 +172,13 @@
             this.TitleTextBox.Location = new System.Drawing.Point(85, 13);
             this.TitleTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(486, 22);
+            this.TitleTextBox.Size = new System.Drawing.Size(486, 26);
             this.TitleTextBox.TabIndex = 13;
             this.TitleTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
             // 
             // AddEditNote
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 511);
             this.Controls.Add(this.ModifiedDateTimePicker);
