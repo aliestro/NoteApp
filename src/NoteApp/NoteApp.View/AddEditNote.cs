@@ -31,5 +31,10 @@ namespace NoteApp.View
         {
 
         }
+
+        private void AddEditNote_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

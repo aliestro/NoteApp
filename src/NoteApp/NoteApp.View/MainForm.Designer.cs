@@ -42,10 +42,10 @@ namespace NoteApp.View
             this.ShowComboBox = new System.Windows.Forms.ComboBox();
             this.ShowCategoryLabel = new System.Windows.Forms.Label();
             this.CategoryLabel = new System.Windows.Forms.Label();
-            this.WorkLabel = new System.Windows.Forms.Label();
+            this.NoteCategoryLabel = new System.Windows.Forms.Label();
             this.CreatedLabel = new System.Windows.Forms.Label();
             this.ModifiedLabel = new System.Windows.Forms.Label();
-            this.TitalLabel = new System.Windows.Forms.Label();
+            this.TitleLabel = new System.Windows.Forms.Label();
             this.MainRichTextBox = new System.Windows.Forms.RichTextBox();
             this.AddButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
@@ -66,7 +66,7 @@ namespace NoteApp.View
             this.HelpToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
-            this.MainMenuStrip.Size = new System.Drawing.Size(166, 31);
+            this.MainMenuStrip.Size = new System.Drawing.Size(316, 31);
             this.MainMenuStrip.TabIndex = 0;
             this.MainMenuStrip.Text = "FileMenuStrip";
             // 
@@ -107,15 +107,16 @@ namespace NoteApp.View
             // EditNoteToolStripMenuItem
             // 
             this.EditNoteToolStripMenuItem.Name = "EditNoteToolStripMenuItem";
-            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(198, 28);
+            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
             this.EditNoteToolStripMenuItem.Text = "Edit Note ";
-            this.EditNoteToolStripMenuItem.Click += new System.EventHandler(this.EditNoteToolStripMenuItem_Click);
+            this.EditNoteToolStripMenuItem.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // RemoveNoteToolStripMenuItem
             // 
             this.RemoveNoteToolStripMenuItem.Name = "RemoveNoteToolStripMenuItem";
-            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(198, 28);
+            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
             this.RemoveNoteToolStripMenuItem.Text = "Remove Note";
+            this.RemoveNoteToolStripMenuItem.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // HelpToolStripMenuItem
             // 
@@ -147,7 +148,7 @@ namespace NoteApp.View
             // 
             this.ShowCategoryLabel.AutoSize = true;
             this.ShowCategoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ShowCategoryLabel.Location = new System.Drawing.Point(9, 38);
+            this.ShowCategoryLabel.Location = new System.Drawing.Point(7, 36);
             this.ShowCategoryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ShowCategoryLabel.Name = "ShowCategoryLabel";
             this.ShowCategoryLabel.Size = new System.Drawing.Size(127, 20);
@@ -167,18 +168,18 @@ namespace NoteApp.View
             this.CategoryLabel.TabIndex = 7;
             this.CategoryLabel.Text = "Category:";
             // 
-            // WorkLabel
+            // NoteCategoryLabel
             // 
-            this.WorkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoteCategoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.WorkLabel.AutoSize = true;
-            this.WorkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.WorkLabel.Location = new System.Drawing.Point(388, 71);
-            this.WorkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.WorkLabel.Name = "WorkLabel";
-            this.WorkLabel.Size = new System.Drawing.Size(48, 20);
-            this.WorkLabel.TabIndex = 8;
-            this.WorkLabel.Text = "Work";
+            this.NoteCategoryLabel.AutoSize = true;
+            this.NoteCategoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NoteCategoryLabel.Location = new System.Drawing.Point(388, 71);
+            this.NoteCategoryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NoteCategoryLabel.Name = "NoteCategoryLabel";
+            this.NoteCategoryLabel.Size = new System.Drawing.Size(48, 20);
+            this.NoteCategoryLabel.TabIndex = 8;
+            this.NoteCategoryLabel.Text = "Work";
             // 
             // CreatedLabel
             // 
@@ -208,18 +209,18 @@ namespace NoteApp.View
             this.ModifiedLabel.TabIndex = 12;
             this.ModifiedLabel.Text = "Modified:";
             // 
-            // TitalLabel
+            // TitleLabel
             // 
-            this.TitalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.TitalLabel.AutoSize = true;
-            this.TitalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TitalLabel.Location = new System.Drawing.Point(318, 33);
-            this.TitalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.TitalLabel.Name = "TitalLabel";
-            this.TitalLabel.Size = new System.Drawing.Size(421, 29);
-            this.TitalLabel.TabIndex = 13;
-            this.TitalLabel.Text = "Требование к оформлению кода";
+            this.TitleLabel.AutoSize = true;
+            this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TitleLabel.Location = new System.Drawing.Point(318, 33);
+            this.TitleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(421, 29);
+            this.TitleLabel.TabIndex = 13;
+            this.TitleLabel.Text = "Требование к оформлению кода";
             // 
             // MainRichTextBox
             // 
@@ -282,6 +283,7 @@ namespace NoteApp.View
             this.DeleteButton.Size = new System.Drawing.Size(30, 30);
             this.DeleteButton.TabIndex = 17;
             this.DeleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // CreatedDateTimePicker
             // 
@@ -311,12 +313,14 @@ namespace NoteApp.View
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TitleListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TitleListBox.FormattingEnabled = true;
+            this.TitleListBox.IntegralHeight = false;
             this.TitleListBox.ItemHeight = 20;
             this.TitleListBox.Location = new System.Drawing.Point(11, 69);
             this.TitleListBox.Margin = new System.Windows.Forms.Padding(2);
             this.TitleListBox.Name = "TitleListBox";
-            this.TitleListBox.Size = new System.Drawing.Size(292, 404);
+            this.TitleListBox.Size = new System.Drawing.Size(292, 425);
             this.TitleListBox.TabIndex = 20;
+            this.TitleListBox.SelectedIndexChanged += new System.EventHandler(this.TitleListBox_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -330,10 +334,10 @@ namespace NoteApp.View
             this.Controls.Add(this.ModifiedDateTimePicker);
             this.Controls.Add(this.CreatedDateTimePicker);
             this.Controls.Add(this.MainRichTextBox);
-            this.Controls.Add(this.TitalLabel);
+            this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.ModifiedLabel);
             this.Controls.Add(this.CreatedLabel);
-            this.Controls.Add(this.WorkLabel);
+            this.Controls.Add(this.NoteCategoryLabel);
             this.Controls.Add(this.CategoryLabel);
             this.Controls.Add(this.ShowCategoryLabel);
             this.Controls.Add(this.ShowComboBox);
@@ -367,10 +371,10 @@ namespace NoteApp.View
         private System.Windows.Forms.ComboBox ShowComboBox;
         private System.Windows.Forms.Label ShowCategoryLabel;
         private System.Windows.Forms.Label CategoryLabel;
-        private System.Windows.Forms.Label WorkLabel;
+        private System.Windows.Forms.Label NoteCategoryLabel;
         private System.Windows.Forms.Label CreatedLabel;
         private System.Windows.Forms.Label ModifiedLabel;
-        private System.Windows.Forms.Label TitalLabel;
+        private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.RichTextBox MainRichTextBox;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button EditButton;

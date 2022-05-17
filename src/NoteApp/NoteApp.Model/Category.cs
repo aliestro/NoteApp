@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace NoteApp.Model
 {
-
+    /// <summary>
+    /// Перечесление категории заметки
+    /// </summary>
     public enum Category
     {
-        Jobe = 0,
-        Home = 1,
-        HealthandSports = 2,
-        People = 3,
-        Documents = 4,
-        Finance = 5,
-        Differnt = 6,
+        Job,
+        House,
+        HealthAndSports,
+        Peoples,
+        Documents,
+        Finance,
+        Different,
     }
-
 }

@@ -12,12 +12,10 @@ namespace NoteApp.Model
     /// </summary>
     public class Note
     {
-
-
         /// <summary>
         /// Название заметки.
         /// </summary>
-        private string _title = "Без названия";
+        private string _title;
 
         /// <summary>
         /// Категория заметки.
@@ -27,19 +25,17 @@ namespace NoteApp.Model
         /// <summary>
         /// Возвращает или задает текст заголовка.
         /// </summary>
-        /// 
         private string _text;
 
         /// <summary>
         /// Время создания заметки.
         /// </summary>
-        /// 
-        private DateTime _creationTime;
+        private DateTime _createdAt;
+
         /// <summary>
-        /// Время последнего измения заметки.
+        /// Время последнего изменения заметки.
         /// </summary>
-        /// 
-        private DateTime _lastModifiedTime;
+        private DateTime _modifiedAt;
 
         /// <summary>
         /// Возвращает или задает заголовок заметки
@@ -54,11 +50,12 @@ namespace NoteApp.Model
             {
                 if (value.Length>50)
                 {
-                    throw new ArgumentException("Заголовок не должен содержать более 50 символов. Пожалуйста, повторите попытку");
+                    throw new ArgumentException(
+                        "Заголовок не должен содержать " +
+                        "более 50 символов. Пожалуйста, повторите попытку");
                 }
                 _title = value;
-                _lastModifiedTime = DateTime.Now;
-
+                _modifiedAt = DateTime.Now;
             }
         }
 
@@ -74,8 +71,7 @@ namespace NoteApp.Model
             set
             {
                 _text = value;
-                _lastModifiedTime = DateTime.Now;
-
+                _modifiedAt = DateTime.Now;
             }
         }
 
@@ -91,31 +87,54 @@ namespace NoteApp.Model
             set
             {
                 _category = value;
-                _lastModifiedTime = DateTime.Now;
+                _modifiedAt = DateTime.Now;
             }
         }
 
-        public DateTime CreationTime
+        /// <summary>
+        /// Возвращает время создания заметки
+        /// </summary>
+        public DateTime CreatedAt
         {
             get
             {
-                return _creationTime;
+                return _createdAt;
             }
         }
-                /// <summary>
-                /// Создает экземпляр <see cref="Note">
-                /// </summary>
-                /// <param name="title"></param>
-                /// <param name="category"></param>
-                /// <param name="text"></param>
-                public Note(string title, Category category, string text)
+
+        /// <summary>
+        /// Возвращает время изменения заметки
+        /// </summary>
+        public DateTime ModifiedAt
+        {
+            get
+            {
+                return _modifiedAt;
+            }
+        }
+
+        /// <summary>
+        /// Создает экземпляр <see cref="Note">
+        /// </summary>
+        /// <param name="title">Заголовок заметки.</param>
+        /// <param name="category">Категория заметки.</param>
+        /// <param name="text">Текст заметки.</param>
+        public Note(string title, Category category = Category.Different, string text = "Без названия")
         {
             _title = title;
             _category = category;
             _text = text;
-            _creationTime = DateTime.Now;
-            _lastModifiedTime = DateTime.Now;
+            _createdAt = DateTime.Now;
+            _modifiedAt = DateTime.Now;
+        }
+
+        public Note()
+        {
+            _title = "Новая заметка";
+            _text = "";
+            _category=Category.Different;
+            _createdAt = DateTime.Now;
+           _modifiedAt = DateTime.Now;
         }
     }
-
 }
