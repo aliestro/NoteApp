@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="CreatedDateTimePicker.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="MainRichTextBox.Text" xml:space="preserve">
     <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum id venenatis. Et ultrices neque ornare aenean. Velit ut tortor pretium viverra suspendisse potenti nullam ac tortor. Auctor augue mauris augue neque gravida in fermentum et sollicitudin. Lorem donec massa sapien faucibus et molestie ac. Aenean euismod elementum nisi quis eleifend quam. Dignissim enim sit amet venenatis urna cursus. Vitae elementum curabitur vitae nunc sed velit dignissim sodales. Sed enim ut sem viverra aliquet eget. Morbi blandit cursus risus at ultrices mi tempus imperdiet.
 </value>
