@@ -13,16 +13,29 @@ namespace NoteApp.View
 {
     public partial class MainForm : Form
     {
-        string testText = "It is a long established fact that a reader will be distracted" +
-            " by the readable content of a page when looking at its layout. " +
-            "The point of using Lorem Ipsum is that it has a more-or-less normal";
+        /// <summary>
+        /// Названия заметок для случайной генерации
+        /// </summary>
+        List<string> _testTitles = new List<string> { "Томск", "Работа", "Отдых", 
+            "Творчество", "Техника", "Фильмы" };
+
+        /// <summary>
+        /// Текст заметок для случайной генерации
+        /// </summary>
+        List<string> _testText = new List<string> {"Lorem ipsum dolor sit amet, " +
+            "consectetur adipiscing elit, sed do",
+            " eiusmod tempor incididunt ut labore et dolore magna aliqua " +
+            "Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+            "laboris nisi ut aliquip ex ea commodo consequat.",
+            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum " +
+            "dolore eu fugiat nulla pariatur. " ,
+            "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia",
+            " deserunt mollit anim id est laborum." };
         public MainForm()
         {
             InitializeComponent();
         }
-
-        //static Note defaultNote = new Note();
-        static List<Note> defaultList = new List<Note> { };
+        private static List<Note> defaultList = new List<Note> { };
         private Project _project = new Project(defaultList);
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -30,7 +43,7 @@ namespace NoteApp.View
 
         }
 
-        private void UpdateListView()
+        private void UpdateListBox()
         {
             TitleListBox.Items.Clear();
             for (int i = 0; i < _project.Projects.Count; ++i)
@@ -54,44 +67,32 @@ namespace NoteApp.View
             TitleLabel.Text = "Note Title";
             NoteCategoryLabel.Text = "None";
         }
-        private void UpdatedIndex(object sender, EventArgs e)
-        {
-            int selected = TitleListBox.SelectedIndex;
-            if (selected == -1)
-            {
-                ClearSelectedObject();
-            }
-            else
-            {
-                UpdateSelectedObject(selected);
-            }
-        }
+
 
         private void AddNote()
         {
-            //Note newNote = new Note("Новая заметка", Category.Different,testText);
-            //_project.Projects.Add(newNote);
             RandomNote();
         }
 
         private void RandomNote()
         {
             Random random = new Random();
-            Category randomCategory = (Category) random.Next(0,6);
-            string randomTitle = System.IO.Path.GetRandomFileName();
-            var randomText = System.IO.Path.GetRandomFileName();
-            Note newNote = new Note(randomTitle, randomCategory, randomText);
+            Array values = Enum.GetValues(typeof(Category));
+            int randomCategory = random.Next(values.Length);
+            int randomTitle = random.Next(_testTitles.Count);
+            int randomText = random.Next(_testText.Count);
+            Note newNote = new Note(_testTitles[randomTitle], (Category) randomCategory, _testText[randomText]);
             _project.Projects.Add(newNote);
         }
         private void AddButton_Click(object sender, EventArgs e)
         {
             AddNote();
-            UpdateListView();
+            UpdateListBox();
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            AddEditNote addEditNote = new AddEditNote();
+            NoteForm addEditNote = new NoteForm();
             addEditNote.Show();
         }
 
@@ -101,20 +102,15 @@ namespace NoteApp.View
             aboutForm.Show();
         }
 
-        private void CreatedDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddNote();
-            UpdateListView();
+            UpdateListBox();
         }
 
         private void EditNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddEditNote addEditNote = new AddEditNote();
+            NoteForm addEditNote = new NoteForm();
             addEditNote.Show();
         }
 
@@ -131,30 +127,54 @@ namespace NoteApp.View
             }
         }
 
-        private void RemoveObject(int selected)
+        private void RemoveNote(int selected)
         {
             TitleListBox.Items.RemoveAt(selected);
             _project.Projects.RemoveAt(selected);
         }
 
+        /// <summary>
+        /// Кнопка удаления записки
+        /// </summary>
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            int selected = TitleListBox.SelectedIndex;
-            if (selected == -1)
+            int selectedIndex = TitleListBox.SelectedIndex;
+            if (selectedIndex == -1)
             {
                 return;
             }
-            DialogResult result = MessageBox.Show(@"Do you really wanna remove " + _project.Projects[TitleListBox.SelectedIndex].Title,
+            var _title = _project.Projects[selectedIndex].Title;
+            DialogResult result = MessageBox.Show(@"Do you really wanna remove? " + 
+                _title,
                 "Message",
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button1,
-                MessageBoxOptions.ServiceNotification);
+                MessageBoxDefaultButton.Button1);
             if (result == DialogResult.OK)
             {
-                RemoveObject(selected);
-                UpdateListView();
+                RemoveNote(selectedIndex);
+                UpdateListBox();
             }
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            DialogResult result = MessageBox.Show(@"Do you wanna exit? ",
+                "Message",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.OK)
+            {
+                e.Cancel = false;
+            }
+
         }
     }
 }

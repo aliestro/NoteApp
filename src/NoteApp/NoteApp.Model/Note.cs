@@ -86,6 +86,20 @@ namespace NoteApp.Model
             }
             set
             {
+                var _categorys = Enum.GetValues(typeof(Category));
+                bool _categoryEror = true;
+                foreach (Category item in _categorys)
+                {
+                    value = item;
+                    _categoryEror = false;
+                    break;
+                }
+                /*if (_categoryEror)
+                {
+                    throw new ArgumentException(
+                        "Некорректно выбрана категория " +
+                        "пожалуйста, выберите необходимую из имеющегося списка");
+                }*/
                 _category = value;
                 _modifiedAt = DateTime.Now;
             }

@@ -1,6 +1,6 @@
 ﻿namespace NoteApp.View
 {
-    partial class AddEditNote
+    partial class NoteForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditNote));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoteForm));
             this.ModifiedLabel = new System.Windows.Forms.Label();
             this.OkButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
@@ -65,6 +65,7 @@
             this.OkButton.TabIndex = 11;
             this.OkButton.Text = "OK";
             this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // CancelButton
             // 
@@ -76,6 +77,7 @@
             this.CancelButton.TabIndex = 12;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // CreatedDateTimePicker
             // 
@@ -94,6 +96,14 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.CategoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CategoryComboBox.FormattingEnabled = true;
+            this.CategoryComboBox.Items.AddRange(new object[] {
+            "Job",
+            "House",
+            "HealthAndSports",
+            "Peoples",
+            "Documents",
+            "Finance",
+            "Different"});
             this.CategoryComboBox.Location = new System.Drawing.Point(85, 47);
             this.CategoryComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.CategoryComboBox.Name = "CategoryComboBox";
@@ -150,6 +160,7 @@
             this.MainRichTextBox.Size = new System.Drawing.Size(560, 350);
             this.MainRichTextBox.TabIndex = 10;
             this.MainRichTextBox.Text = resources.GetString("MainRichTextBox.Text");
+            this.MainRichTextBox.TextChanged += new System.EventHandler(this.MainRichTextBox_TextChanged);
             // 
             // CategoryLabel
             // 
@@ -176,7 +187,7 @@
             this.TitleTextBox.TabIndex = 13;
             this.TitleTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
             // 
-            // AddEditNote
+            // NoteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -195,10 +206,10 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(602, 558);
-            this.Name = "AddEditNote";
+            this.Name = "NoteForm";
             this.ShowIcon = false;
             this.Text = "Add/Edit Note";
-            this.Load += new System.EventHandler(this.AddEditNote_Load);
+            this.Load += new System.EventHandler(this.NoteForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

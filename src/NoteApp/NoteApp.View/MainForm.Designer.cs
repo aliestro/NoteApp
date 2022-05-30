@@ -66,7 +66,7 @@ namespace NoteApp.View
             this.HelpToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
-            this.MainMenuStrip.Size = new System.Drawing.Size(316, 31);
+            this.MainMenuStrip.Size = new System.Drawing.Size(166, 31);
             this.MainMenuStrip.TabIndex = 0;
             this.MainMenuStrip.Text = "FileMenuStrip";
             // 
@@ -83,8 +83,9 @@ namespace NoteApp.View
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(387, 28);
-            this.ExitToolStripMenuItem.Text = "Exit (Выйти из приложения – Alt+F4) ";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(126, 28);
+            this.ExitToolStripMenuItem.Text = "Exit ";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
@@ -107,14 +108,14 @@ namespace NoteApp.View
             // EditNoteToolStripMenuItem
             // 
             this.EditNoteToolStripMenuItem.Name = "EditNoteToolStripMenuItem";
-            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(198, 28);
             this.EditNoteToolStripMenuItem.Text = "Edit Note ";
             this.EditNoteToolStripMenuItem.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // RemoveNoteToolStripMenuItem
             // 
             this.RemoveNoteToolStripMenuItem.Name = "RemoveNoteToolStripMenuItem";
-            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(198, 28);
             this.RemoveNoteToolStripMenuItem.Text = "Remove Note";
             this.RemoveNoteToolStripMenuItem.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -138,7 +139,7 @@ namespace NoteApp.View
             // 
             this.ShowComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ShowComboBox.FormattingEnabled = true;
-            this.ShowComboBox.Location = new System.Drawing.Point(134, 33);
+            this.ShowComboBox.Location = new System.Drawing.Point(133, 33);
             this.ShowComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.ShowComboBox.Name = "ShowComboBox";
             this.ShowComboBox.Size = new System.Drawing.Size(170, 28);
@@ -349,6 +350,7 @@ namespace NoteApp.View
             this.MinimumSize = new System.Drawing.Size(1000, 600);
             this.Name = "MainForm";
             this.Text = "NoteApp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.MainMenuStrip.ResumeLayout(false);
             this.MainMenuStrip.PerformLayout();
