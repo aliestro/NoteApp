@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoteForm));
             this.ModifiedLabel = new System.Windows.Forms.Label();
             this.OkButton = new System.Windows.Forms.Button();
@@ -37,9 +38,10 @@
             this.CreatedLabel = new System.Windows.Forms.Label();
             this.ModifiedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.TitleLable = new System.Windows.Forms.Label();
-            this.MainRichTextBox = new System.Windows.Forms.RichTextBox();
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.TitleTextBox = new System.Windows.Forms.TextBox();
+            this.TextBox = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SuspendLayout();
             // 
             // ModifiedLabel
@@ -94,6 +96,8 @@
             // 
             this.CategoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.CategoryComboBox.BackColor = System.Drawing.SystemColors.Window;
+            this.CategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Items.AddRange(new object[] {
@@ -148,20 +152,6 @@
             this.TitleLable.TabIndex = 0;
             this.TitleLable.Text = "Title:";
             // 
-            // MainRichTextBox
-            // 
-            this.MainRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MainRichTextBox.Location = new System.Drawing.Point(11, 118);
-            this.MainRichTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.MainRichTextBox.Name = "MainRichTextBox";
-            this.MainRichTextBox.Size = new System.Drawing.Size(560, 350);
-            this.MainRichTextBox.TabIndex = 10;
-            this.MainRichTextBox.Text = resources.GetString("MainRichTextBox.Text");
-            this.MainRichTextBox.TextChanged += new System.EventHandler(this.MainRichTextBox_TextChanged);
-            // 
             // CategoryLabel
             // 
             this.CategoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -187,17 +177,34 @@
             this.TitleTextBox.TabIndex = 13;
             this.TitleTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
             // 
+            // TextBox
+            // 
+            this.TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.TextBox.Location = new System.Drawing.Point(11, 118);
+            this.TextBox.Multiline = true;
+            this.TextBox.Name = "TextBox";
+            this.TextBox.Size = new System.Drawing.Size(560, 350);
+            this.TextBox.TabIndex = 14;
+            this.TextBox.Text = resources.GetString("TextBox.Text");
+            this.TextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // NoteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 511);
+            this.Controls.Add(this.TextBox);
             this.Controls.Add(this.ModifiedDateTimePicker);
             this.Controls.Add(this.TitleTextBox);
             this.Controls.Add(this.CategoryLabel);
             this.Controls.Add(this.ModifiedLabel);
             this.Controls.Add(this.TitleLable);
-            this.Controls.Add(this.MainRichTextBox);
             this.Controls.Add(this.CreatedLabel);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.CategoryComboBox);
@@ -220,12 +227,13 @@
         private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.DateTimePicker CreatedDateTimePicker;
-        private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.Label CreatedLabel;
         private System.Windows.Forms.DateTimePicker ModifiedDateTimePicker;
         private System.Windows.Forms.Label TitleLable;
-        private System.Windows.Forms.RichTextBox MainRichTextBox;
         private System.Windows.Forms.Label CategoryLabel;
         private System.Windows.Forms.TextBox TitleTextBox;
+        private System.Windows.Forms.ComboBox CategoryComboBox;
+        private System.Windows.Forms.TextBox TextBox;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

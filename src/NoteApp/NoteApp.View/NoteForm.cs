@@ -17,44 +17,57 @@ namespace NoteApp.View
         {
             InitializeComponent();
             CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
+            _note = new Note("Ушёл погулять", Category.HealthAndSports, "Пошел гулять в парк");
             UpdateForm();
         }
 
-        private Note _note = new Note("Ушёл за пивом", Category.Different, "Пошёл в АЯН за джоем");
+        /// <summary>
+        /// Объект заметки 
+        /// </summary>
+        private Note _note = new Note();
+
+        /// <summary>
+        /// Неверный заголовок 
+        /// </summary>
         private string _titleError;
 
+        /// <summary>
+        /// Обновление формы
+        /// </summary>
         private void UpdateForm()
         {
             TitleTextBox.Text = _note.Title;
             CategoryComboBox.SelectedItem = _note.Category;
             CreatedDateTimePicker.Value = _note.CreatedAt;
             ModifiedDateTimePicker.Value = _note.ModifiedAt;
-            MainRichTextBox.Text = _note.Text;
+            TextBox.Text = _note.Text;
         }
 
+        /// <summary>
+        /// Обновление заметки
+        /// </summary>
         private void UpdateNote()
         {
             _note.Title = TitleTextBox.Text;
             _note.Category = (Category)Enum.Parse(typeof(Category), 
                 CategoryComboBox.GetItemText(CategoryComboBox.SelectedItem));
-            _note.Text = MainRichTextBox.Text;  
+            _note.Text = TextBox.Text;  
         }
 
-        
+        /// <summary>
+        /// Проверка формы на ошибку
+        /// </summary>
+        /// <returns></returns>
         bool CheckFormOnErrors()
         {
-            if ((_titleError == null))
-            { 
+            if ((_titleError == null)) 
+             { 
                 return false;
             }
             else 
             {
                 return true;
             }
-        }
-        private void MainGroupBox_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void TitleTextBox_TextChanged(object sender, EventArgs e)
@@ -89,11 +102,6 @@ namespace NoteApp.View
 
         }
 
-        private void MainRichTextBox_TextChanged(object sender, EventArgs e)
-        {
-            _note.Text = MainRichTextBox.Text;
-        }
-
         private void OkButton_Click(object sender, EventArgs e)
         {
             try
@@ -106,6 +114,11 @@ namespace NoteApp.View
             {
                 MessageBox.Show(exception.Message, "Ошибка ввода");
             }
+        }
+
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            _note.Text = TextBox.Text;
         }
     }
 }
