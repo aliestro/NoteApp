@@ -1,22 +1,24 @@
-﻿using System;
+﻿using NoteApp.Model;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using NoteApp.Model;
 
 namespace NoteApp.View
 {
     public partial class MainForm : Form
     {
         /// <summary>
+        /// Запуск главного окна
+        /// </summary>
+        public MainForm()
+        {
+            InitializeComponent();
+        }
+
+        /// <summary>
         /// Названия заметок для случайной генерации
         /// </summary>
-        List<string> _testTitles = new List<string> { "Томск", "Работа", "Отдых", 
+        List<string> _testTitles = new List<string> { "Томск", "Работа", "Отдых",
             "Творчество", "Техника", "Фильмы" };
 
         /// <summary>
@@ -31,18 +33,15 @@ namespace NoteApp.View
             "dolore eu fugiat nulla pariatur. " ,
             "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia",
             " deserunt mollit anim id est laborum." };
-        public MainForm()
-        {
-            InitializeComponent();
-        }
-        private static List<Note> defaultList = new List<Note> { };
-        private Project _project = new Project(defaultList);
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
+        /// <summary>
+        /// Закрытое поле типа Project
+        /// </summary>
+        private Project _project = new Project();
 
-        }
-
+        /// <summary>
+        /// Обновление элемента ListBox
+        /// </summary>
         private void UpdateListBox()
         {
             TitleListBox.Items.Clear();
@@ -52,28 +51,37 @@ namespace NoteApp.View
             }
         }
 
-        private void UpdateSelectedObject(int index)
+        /// <summary>
+        /// Обновить выбранную заметку
+        /// </summary>
+        /// <param name="index"></param>
+        private void UpdateSelectedNote(int index)
         {
-            MainRichTextBox.Text = _project.Projects[index].Text;
+            TextBox.Text = _project.Projects[index].Text;
             TitleLabel.Text = _project.Projects[index].Title;
             NoteCategoryLabel.Text = _project.Projects[index].Category.ToString();
             CreatedDateTimePicker.Value = _project.Projects[index].CreatedAt;
             ModifiedDateTimePicker.Value = _project.Projects[index].ModifiedAt;
         }       
 
-        private void ClearSelectedObject()
+        /// <summary>
+        /// Очистить выбранную заметку
+        /// </summary>
+        private void ClearSelectedNote()
         {
-            MainRichTextBox.Text = " ";
+            TextBox.Text = " ";
             TitleLabel.Text = "Note Title";
             NoteCategoryLabel.Text = "None";
         }
 
-
+        /// <summary>
+        /// Добавить заметку
+        /// </summary>
         private void AddNote()
         {
             RandomNote();
         }
-
+            
         private void RandomNote()
         {
             Random random = new Random();
@@ -81,9 +89,20 @@ namespace NoteApp.View
             int randomCategory = random.Next(values.Length);
             int randomTitle = random.Next(_testTitles.Count);
             int randomText = random.Next(_testText.Count);
-            Note newNote = new Note(_testTitles[randomTitle], (Category) randomCategory, _testText[randomText]);
+            Note newNote = new Note(_testTitles[randomTitle], 
+                (Category) randomCategory, _testText[randomText]);
             _project.Projects.Add(newNote);
         }
+
+        /// <summary>
+        /// Открытие NoteForm
+        /// </summary>
+        private void OpenSecondForm()
+        {
+            NoteForm secondForm = new NoteForm();
+            secondForm.Show();
+        }
+
         private void AddButton_Click(object sender, EventArgs e)
         {
             AddNote();
@@ -92,8 +111,7 @@ namespace NoteApp.View
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            NoteForm addEditNote = new NoteForm();
-            addEditNote.Show();
+            OpenSecondForm();
         }
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,27 +128,26 @@ namespace NoteApp.View
 
         private void EditNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NoteForm addEditNote = new NoteForm();
-            addEditNote.Show();
+            OpenSecondForm();
         }
 
         private void TitleListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selected = TitleListBox.SelectedIndex;
-            if (selected == -1)
+            int index = TitleListBox.SelectedIndex;
+            if (index == -1)
             {
-                ClearSelectedObject();
+                ClearSelectedNote();
             }
             else
             {
-                UpdateSelectedObject(selected);
+                UpdateSelectedNote(index);
             }
         }
 
-        private void RemoveNote(int selected)
+        private void RemoveNote(int index)
         {
-            TitleListBox.Items.RemoveAt(selected);
-            _project.Projects.RemoveAt(selected);
+            TitleListBox.Items.RemoveAt(index);
+            _project.Projects.RemoveAt(index);
         }
 
         /// <summary>
@@ -138,12 +155,12 @@ namespace NoteApp.View
         /// </summary>
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            int selectedIndex = TitleListBox.SelectedIndex;
-            if (selectedIndex == -1)
+            int index = TitleListBox.SelectedIndex;
+            if (index == -1)
             {
                 return;
             }
-            var _title = _project.Projects[selectedIndex].Title;
+            var _title = _project.Projects[index].Title;
             DialogResult result = MessageBox.Show(@"Do you really wanna remove? " + 
                 _title,
                 "Message",
@@ -152,7 +169,7 @@ namespace NoteApp.View
                 MessageBoxDefaultButton.Button1);
             if (result == DialogResult.OK)
             {
-                RemoveNote(selectedIndex);
+                RemoveNote(index);
                 UpdateListBox();
             }
         }
@@ -174,7 +191,6 @@ namespace NoteApp.View
             {
                 e.Cancel = false;
             }
-
         }
     }
 }

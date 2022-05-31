@@ -29,6 +29,7 @@ namespace NoteApp.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,13 +47,14 @@ namespace NoteApp.View
             this.CreatedLabel = new System.Windows.Forms.Label();
             this.ModifiedLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
-            this.MainRichTextBox = new System.Windows.Forms.RichTextBox();
             this.AddButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.CreatedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.ModifiedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.TitleListBox = new System.Windows.Forms.ListBox();
+            this.TextBox = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -223,20 +225,6 @@ namespace NoteApp.View
             this.TitleLabel.TabIndex = 13;
             this.TitleLabel.Text = "Требование к оформлению кода";
             // 
-            // MainRichTextBox
-            // 
-            this.MainRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MainRichTextBox.Location = new System.Drawing.Point(322, 134);
-            this.MainRichTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.MainRichTextBox.Name = "MainRichTextBox";
-            this.MainRichTextBox.ReadOnly = true;
-            this.MainRichTextBox.Size = new System.Drawing.Size(659, 416);
-            this.MainRichTextBox.TabIndex = 14;
-            this.MainRichTextBox.Text = resources.GetString("MainRichTextBox.Text");
-            // 
             // AddButton
             // 
             this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -323,18 +311,36 @@ namespace NoteApp.View
             this.TitleListBox.TabIndex = 20;
             this.TitleListBox.SelectedIndexChanged += new System.EventHandler(this.TitleListBox_SelectedIndexChanged);
             // 
+            // TextBox
+            // 
+            this.TextBox.Location = new System.Drawing.Point(323, 133);
+            this.TextBox.MinimumSize = new System.Drawing.Size(659, 416);
+            this.TextBox.Multiline = true;
+            this.TextBox.Name = "TextBox";
+            this.TextBox.ReadOnly = true;
+            this.TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TextBox.Size = new System.Drawing.Size(659, 416);
+            this.TextBox.TabIndex = 21;
+            this.TextBox.Text = resources.GetString("TextBox.Text");
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.TextBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.ModifiedDateTimePicker);
             this.Controls.Add(this.CreatedDateTimePicker);
-            this.Controls.Add(this.MainRichTextBox);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.ModifiedLabel);
             this.Controls.Add(this.CreatedLabel);
@@ -351,7 +357,6 @@ namespace NoteApp.View
             this.Name = "MainForm";
             this.Text = "NoteApp";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.MainMenuStrip.ResumeLayout(false);
             this.MainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -377,13 +382,14 @@ namespace NoteApp.View
         private System.Windows.Forms.Label CreatedLabel;
         private System.Windows.Forms.Label ModifiedLabel;
         private System.Windows.Forms.Label TitleLabel;
-        private System.Windows.Forms.RichTextBox MainRichTextBox;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.DateTimePicker CreatedDateTimePicker;
         private System.Windows.Forms.DateTimePicker ModifiedDateTimePicker;
         private System.Windows.Forms.ListBox TitleListBox;
+        private System.Windows.Forms.TextBox TextBox;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

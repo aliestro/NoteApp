@@ -94,12 +94,12 @@ namespace NoteApp.Model
                     _categoryEror = false;
                     break;
                 }
-                /*if (_categoryEror)
+                if (_categoryEror)
                 {
                     throw new ArgumentException(
                         "Некорректно выбрана категория " +
                         "пожалуйста, выберите необходимую из имеющегося списка");
-                }*/
+                }
                 _category = value;
                 _modifiedAt = DateTime.Now;
             }
@@ -142,13 +142,16 @@ namespace NoteApp.Model
             _modifiedAt = DateTime.Now;
         }
 
+        /// <summary>
+        /// Конструктор заметки
+        /// </summary>
         public Note()
         {
             _title = "Новая заметка";
             _text = "";
-            _category=Category.Different;
+            _category = Category.Different;
             _createdAt = DateTime.Now;
-           _modifiedAt = DateTime.Now;
+            _modifiedAt = DateTime.Now;
         }
     }
 }

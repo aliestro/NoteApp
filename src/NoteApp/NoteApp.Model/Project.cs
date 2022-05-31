@@ -14,7 +14,7 @@ namespace NoteApp.Model
         /// <summary>
         /// Сборник заметок
         /// </summary>
-        private List<Note> _projects;
+        private List<Note> _notes;
 
         /// <summary>
         /// Геттеры и сеттеры для сборника заметок
@@ -23,20 +23,20 @@ namespace NoteApp.Model
         {
             get
             {
-                return _projects;
+                return _notes;
             }
             set
             {
-                _projects = value;
+                _notes = value;
             }
         }
 
         /// <summary>
         /// Конструктор
         /// </summary>
-        public Project(List<Note> projects)
+        public Project()
         {
-            _projects = projects;
+            _notes = new List<Note>();
         }
     }
 }
