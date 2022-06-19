@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using NoteApp.Model;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using NoteApp.Model;
 
 namespace NoteApp.View
 {
@@ -16,8 +10,8 @@ namespace NoteApp.View
         public NoteForm()
         {
             InitializeComponent();
-            CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
-            _note = new Note("Ушёл погулять", Category.HealthAndSports, "Пошел гулять в парк");
+            CategoryComboBox.SelectedIndex = 6;
+            _note = new Note("Название", Category.Different, "Текст...");
             UpdateForm();
         }
 
@@ -27,9 +21,38 @@ namespace NoteApp.View
         private Note _note = new Note();
 
         /// <summary>
+        /// Объект заметки
+        /// </summary>
+        private Note _noteCopy = new Note();
+
+        /// <summary>
         /// Неверный заголовок 
         /// </summary>
         private string _titleError;
+
+        /// <summary>
+        /// Задает и возвращает объект заметки
+        /// </summary>
+        public Note Note
+        {
+            get
+            {
+                return _note;
+            }
+            set
+            {
+                _note = value;
+                if (_note != null)
+                {
+                    _noteCopy = (Note)_note.Clone();
+                }
+                else
+                {
+                    _noteCopy = new Note();
+                }
+                UpdateForm();
+            }
+        }
 
         /// <summary>
         /// Обновление формы
@@ -37,7 +60,7 @@ namespace NoteApp.View
         private void UpdateForm()
         {
             TitleTextBox.Text = _note.Title;
-            CategoryComboBox.SelectedItem = _note.Category;
+            CategoryComboBox.SelectedItem = Enum.GetName(typeof(Category),_note.Category);
             CreatedDateTimePicker.Value = _note.CreatedAt;
             ModifiedDateTimePicker.Value = _note.ModifiedAt;
             TextBox.Text = _note.Text;
@@ -48,10 +71,12 @@ namespace NoteApp.View
         /// </summary>
         private void UpdateNote()
         {
-            _note.Title = TitleTextBox.Text;
-            _note.Category = (Category)Enum.Parse(typeof(Category), 
-                CategoryComboBox.GetItemText(CategoryComboBox.SelectedItem));
-            _note.Text = TextBox.Text;  
+            _noteCopy.Title = TitleTextBox.Text;
+            //_noteCopy.Category = (Category)Enum.Parse(typeof(Category),
+            //    CategoryComboBox.GetItemText(CategoryComboBox.SelectedItem));
+            Category selectedCategory = (Category)Enum.Parse(typeof(Category), CategoryComboBox.GetItemText(CategoryComboBox.SelectedItem));
+            _noteCopy.Category = selectedCategory;
+            _noteCopy.Text = TextBox.Text;
         }
 
         /// <summary>
@@ -60,11 +85,11 @@ namespace NoteApp.View
         /// <returns></returns>
         bool CheckFormOnErrors()
         {
-            if ((_titleError == null)) 
-             { 
+            if ((_titleError == null))
+            {
                 return false;
             }
-            else 
+            else
             {
                 return true;
             }
@@ -74,21 +99,23 @@ namespace NoteApp.View
         {
             try
             {
-                _note.Title = TitleTextBox.Text;
+                _noteCopy.Title = TitleTextBox.Text;
                 TitleTextBox.BackColor = Color.White;
                 _titleError = null;
+                TitleToolTip.SetToolTip(TitleTextBox, string.Empty);
             }
             catch (Exception exception)
             {
                 _titleError = TitleTextBox.Text;
                 TitleTextBox.BackColor = Color.LightPink;
-                MessageBox.Show(exception.Message, "Ошибка ввода");
+                //MessageBox.Show(exception.Message, "Ошибка ввода");
+                TitleToolTip.SetToolTip(TitleTextBox, exception.Message);
             }
         }
 
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _note.Category = (Category)Enum.Parse(typeof(Category), 
+            _noteCopy.Category = (Category)Enum.Parse(typeof(Category),
                 CategoryComboBox.GetItemText(CategoryComboBox.SelectedItem));
         }
 
@@ -107,9 +134,11 @@ namespace NoteApp.View
             try
             {
                 CheckFormOnErrors();
-                UpdateNote();     
+                UpdateNote();
+                _note = _noteCopy;
+                DialogResult = DialogResult.OK;
                 Close();
-            }   
+            }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message, "Ошибка ввода");
@@ -118,7 +147,7 @@ namespace NoteApp.View
 
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
-            _note.Text = TextBox.Text;
+            _noteCopy.Text = TextBox.Text;
         }
     }
 }

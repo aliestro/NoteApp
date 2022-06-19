@@ -13,7 +13,12 @@ namespace NoteApp.View
         public MainForm()
         {
             InitializeComponent();
+            CategoryComboBox.SelectedIndex = 0;
+            _project = _projectSerializer.LoadFromFile();
+            OutputByCategory();
+            UpdateListBox();
         }
+        private const string _allCategory = "All";
 
         /// <summary>
         /// Названия заметок для случайной генерации
@@ -40,14 +45,25 @@ namespace NoteApp.View
         private Project _project = new Project();
 
         /// <summary>
+        /// Список отображаемых заметок на экране
+        /// </summary>
+        private List<Note> _currentNotes;
+
+        /// <summary>
+        /// Экземпляр класс ProjectSerializer для сереализации.
+        /// </summary>
+        private ProjectSerializer _projectSerializer = new ProjectSerializer();
+
+        /// <summary>
         /// Обновление элемента ListBox
         /// </summary>
         private void UpdateListBox()
         {
             TitleListBox.Items.Clear();
-            for (int i = 0; i < _project.Projects.Count; ++i)
+            OutputByCategory();
+            for (int i = 0; i < _currentNotes.Count; ++i)
             {
-                TitleListBox.Items.Add(_project.Projects[i].Title);
+                TitleListBox.Items.Add(_currentNotes[i].Title);
             }
         }
 
@@ -57,12 +73,17 @@ namespace NoteApp.View
         /// <param name="index"></param>
         private void UpdateSelectedNote(int index)
         {
-            TextBox.Text = _project.Projects[index].Text;
-            TitleLabel.Text = _project.Projects[index].Title;
-            NoteCategoryLabel.Text = _project.Projects[index].Category.ToString();
-            CreatedDateTimePicker.Value = _project.Projects[index].CreatedAt;
-            ModifiedDateTimePicker.Value = _project.Projects[index].ModifiedAt;
-        }       
+            if ((index == -1) || (_currentNotes.Count == 0) || (_currentNotes.Count <= index))
+            {
+                ClearSelectedNote();
+                return;
+            }
+            TextBox.Text = _project.Notes[index].Text;
+            TitleLabel.Text = _project.Notes[index].Title;
+            NoteCategoryLabel.Text = _project.Notes[index].Category.ToString();
+            CreatedDateTimePicker.Value = _project.Notes[index].CreatedAt;
+            ModifiedDateTimePicker.Value = _project.Notes[index].ModifiedAt;
+        }
 
         /// <summary>
         /// Очистить выбранную заметку
@@ -79,9 +100,17 @@ namespace NoteApp.View
         /// </summary>
         private void AddNote()
         {
-            RandomNote();
+            var noteForm = new NoteForm();
+            noteForm.ShowDialog();
+            if (noteForm.DialogResult == DialogResult.OK)
+            {
+                _project.Notes.Add(noteForm.Note);
+                OutputByCategory();
+                TitleListBox.SelectedIndex = -1;
+                _projectSerializer.SaveToFile(_project);
+            }
         }
-            
+
         private void RandomNote()
         {
             Random random = new Random();
@@ -89,19 +118,76 @@ namespace NoteApp.View
             int randomCategory = random.Next(values.Length);
             int randomTitle = random.Next(_testTitles.Count);
             int randomText = random.Next(_testText.Count);
-            Note newNote = new Note(_testTitles[randomTitle], 
-                (Category) randomCategory, _testText[randomText]);
-            _project.Projects.Add(newNote);
+            Note newNote = new Note(_testTitles[randomTitle],
+                (Category)randomCategory, _testText[randomText]);
+            _project.Notes.Add(newNote);
+            _projectSerializer.SaveToFile(_project);
         }
 
         /// <summary>
-        /// Открытие NoteForm
+        /// Поиск индекса в списке заметок по индексу заметки из текущей категории
         /// </summary>
-        private void OpenSecondForm()
+        private int FindNoteIndex(int index)
         {
-            NoteForm secondForm = new NoteForm();
-            secondForm.Show();
+            int resultIndex = 0;
+            for (int i = 0; i < _project.Notes.Count; i++)
+            {
+                if (_project.Notes[i] == _currentNotes[index])
+                {
+                    resultIndex = i;
+                    break;
+                }
+            }
+            return resultIndex;
         }
+
+        /// <summary>
+        /// Вывод на экран списка заметок по выбранной категории
+        /// </summary>
+        private void OutputByCategory()
+        {
+            if (CategoryComboBox.SelectedItem.ToString() != _allCategory)
+            {
+                Category noteCategory = (Category)Enum.Parse(typeof(Category),
+                CategoryComboBox.GetItemText(CategoryComboBox.SelectedItem));
+                _currentNotes = _project.SearchByCategory(_project.Notes, noteCategory);
+            }
+            else
+            {
+                _currentNotes = _project.SortByModificationTime(_project.Notes);
+            }
+        }
+
+
+        /// <summary>
+        /// Редактирование существующей заметки.
+        /// </summary>
+        private void EditNote(int index)
+        {
+            if (index == -1)
+            {
+                return;
+            }
+            int currentIndex = index;
+            Note note = _currentNotes[index];
+            index = FindNoteIndex(index);
+            NoteForm noteForm = new NoteForm();
+            noteForm.Note = _project.Notes[index];
+            noteForm.ShowDialog();
+            _project.Notes[index] = noteForm.Note;
+            if (noteForm.DialogResult == DialogResult.OK)
+            {
+                currentIndex = -1;
+                OutputByCategory();
+                UpdateSelectedNote(TitleListBox.SelectedIndex);
+                _projectSerializer.SaveToFile(_project);
+            }
+            if ((TitleListBox.Items.Count != 0) && (currentIndex < TitleListBox.Items.Count))
+            {
+                TitleListBox.SelectedIndex = currentIndex;
+            }
+        }
+
 
         private void AddButton_Click(object sender, EventArgs e)
         {
@@ -111,7 +197,8 @@ namespace NoteApp.View
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            OpenSecondForm();
+            EditNote(TitleListBox.SelectedIndex);
+            UpdateListBox();
         }
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -128,7 +215,8 @@ namespace NoteApp.View
 
         private void EditNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenSecondForm();
+            EditNote(TitleListBox.SelectedIndex);
+            UpdateListBox();
         }
 
         private void TitleListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -147,7 +235,8 @@ namespace NoteApp.View
         private void RemoveNote(int index)
         {
             TitleListBox.Items.RemoveAt(index);
-            _project.Projects.RemoveAt(index);
+            _project.Notes.RemoveAt(index);
+            _projectSerializer.SaveToFile(_project);
         }
 
         /// <summary>
@@ -160,8 +249,8 @@ namespace NoteApp.View
             {
                 return;
             }
-            var _title = _project.Projects[index].Title;
-            DialogResult result = MessageBox.Show(@"Do you really wanna remove? " + 
+            var _title = _project.Notes[index].Title;
+            DialogResult result = MessageBox.Show(@"Do you really wanna remove? " +
                 _title,
                 "Message",
                 MessageBoxButtons.OKCancel,
@@ -191,6 +280,19 @@ namespace NoteApp.View
             {
                 e.Cancel = false;
             }
+        }
+
+        private void RandomNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RandomNote();
+            UpdateListBox();
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ClearSelectedNote();
+            OutputByCategory();
+            UpdateListBox();
         }
     }
 }

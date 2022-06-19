@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 
 namespace NoteApp.Model
 {
     /// <summary>
     /// Описывает блокнот.
     /// </summary>
-    public class Note
+    public class Note: ICloneable
     {
         /// <summary>
         /// Название заметки.
@@ -48,11 +48,11 @@ namespace NoteApp.Model
             }
             set
             {
-                if (value.Length>50)
+                if (value.Length > 50)
                 {
                     throw new ArgumentException(
                         "Заголовок не должен содержать " +
-                        "более 50 символов. Пожалуйста, повторите попытку");
+                        "более 50 символов.");
                 }
                 _title = value;
                 _modifiedAt = DateTime.Now;
@@ -86,20 +86,6 @@ namespace NoteApp.Model
             }
             set
             {
-                var _categorys = Enum.GetValues(typeof(Category));
-                bool _categoryEror = true;
-                foreach (Category item in _categorys)
-                {
-                    value = item;
-                    _categoryEror = false;
-                    break;
-                }
-                if (_categoryEror)
-                {
-                    throw new ArgumentException(
-                        "Некорректно выбрана категория " +
-                        "пожалуйста, выберите необходимую из имеющегося списка");
-                }
                 _category = value;
                 _modifiedAt = DateTime.Now;
             }
@@ -133,7 +119,9 @@ namespace NoteApp.Model
         /// <param name="title">Заголовок заметки.</param>
         /// <param name="category">Категория заметки.</param>
         /// <param name="text">Текст заметки.</param>
-        public Note(string title, Category category = Category.Different, string text = "Без названия")
+        [JsonConstructor]
+        public Note(string title, Category category = Category.Different,
+            string text = "Без названия")
         {
             _title = title;
             _category = category;
@@ -152,6 +140,14 @@ namespace NoteApp.Model
             _category = Category.Different;
             _createdAt = DateTime.Now;
             _modifiedAt = DateTime.Now;
+        }
+
+        /// <summary>
+        /// Метод копирования.
+        /// </summary>
+        public object Clone()
+        {
+            return new Note(this.Title, this.Category, this.Text);
         }
     }
 }
