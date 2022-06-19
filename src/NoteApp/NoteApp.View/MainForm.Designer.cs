@@ -38,23 +38,24 @@ namespace NoteApp.View
             this.AddNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RemoveNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.randomNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ShowComboBox = new System.Windows.Forms.ComboBox();
+            this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             this.ShowCategoryLabel = new System.Windows.Forms.Label();
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.NoteCategoryLabel = new System.Windows.Forms.Label();
             this.CreatedLabel = new System.Windows.Forms.Label();
             this.ModifiedLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
-            this.AddButton = new System.Windows.Forms.Button();
-            this.EditButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
             this.CreatedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.ModifiedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.TitleListBox = new System.Windows.Forms.ListBox();
             this.TextBox = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.EditButton = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,7 +95,8 @@ namespace NoteApp.View
             this.EditToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddNoteToolStripMenuItem,
             this.EditNoteToolStripMenuItem,
-            this.RemoveNoteToolStripMenuItem});
+            this.RemoveNoteToolStripMenuItem,
+            this.randomNoteToolStripMenuItem});
             this.EditToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
             this.EditToolStripMenuItem.Size = new System.Drawing.Size(53, 27);
@@ -103,23 +105,30 @@ namespace NoteApp.View
             // AddNoteToolStripMenuItem
             // 
             this.AddNoteToolStripMenuItem.Name = "AddNoteToolStripMenuItem";
-            this.AddNoteToolStripMenuItem.Size = new System.Drawing.Size(198, 28);
+            this.AddNoteToolStripMenuItem.Size = new System.Drawing.Size(201, 28);
             this.AddNoteToolStripMenuItem.Text = "Add Note ";
             this.AddNoteToolStripMenuItem.Click += new System.EventHandler(this.AddNoteToolStripMenuItem_Click);
             // 
             // EditNoteToolStripMenuItem
             // 
             this.EditNoteToolStripMenuItem.Name = "EditNoteToolStripMenuItem";
-            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(198, 28);
+            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(201, 28);
             this.EditNoteToolStripMenuItem.Text = "Edit Note ";
             this.EditNoteToolStripMenuItem.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // RemoveNoteToolStripMenuItem
             // 
             this.RemoveNoteToolStripMenuItem.Name = "RemoveNoteToolStripMenuItem";
-            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(198, 28);
+            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(201, 28);
             this.RemoveNoteToolStripMenuItem.Text = "Remove Note";
             this.RemoveNoteToolStripMenuItem.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // randomNoteToolStripMenuItem
+            // 
+            this.randomNoteToolStripMenuItem.Name = "randomNoteToolStripMenuItem";
+            this.randomNoteToolStripMenuItem.Size = new System.Drawing.Size(201, 28);
+            this.randomNoteToolStripMenuItem.Text = "Random Note";
+            this.randomNoteToolStripMenuItem.Click += new System.EventHandler(this.RandomNoteToolStripMenuItem_Click);
             // 
             // HelpToolStripMenuItem
             // 
@@ -137,15 +146,26 @@ namespace NoteApp.View
             this.AboutToolStripMenuItem.Text = "About";
             this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
-            // ShowComboBox
+            // CategoryComboBox
             // 
-            this.ShowComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ShowComboBox.FormattingEnabled = true;
-            this.ShowComboBox.Location = new System.Drawing.Point(133, 33);
-            this.ShowComboBox.Margin = new System.Windows.Forms.Padding(2);
-            this.ShowComboBox.Name = "ShowComboBox";
-            this.ShowComboBox.Size = new System.Drawing.Size(170, 28);
-            this.ShowComboBox.TabIndex = 3;
+            this.CategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CategoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CategoryComboBox.FormattingEnabled = true;
+            this.CategoryComboBox.Items.AddRange(new object[] {
+            "All",
+            "Job",
+            "House",
+            "HealthAndSports",
+            "Peoples",
+            "Documents",
+            "Finance",
+            "Different"});
+            this.CategoryComboBox.Location = new System.Drawing.Point(133, 33);
+            this.CategoryComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.CategoryComboBox.Name = "CategoryComboBox";
+            this.CategoryComboBox.Size = new System.Drawing.Size(170, 28);
+            this.CategoryComboBox.TabIndex = 3;
+            this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
             // 
             // ShowCategoryLabel
             // 
@@ -225,55 +245,6 @@ namespace NoteApp.View
             this.TitleLabel.TabIndex = 13;
             this.TitleLabel.Text = "Требование к оформлению кода";
             // 
-            // AddButton
-            // 
-            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddButton.BackColor = System.Drawing.Color.Transparent;
-            this.AddButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddButton.BackgroundImage")));
-            this.AddButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddButton.FlatAppearance.BorderSize = 0;
-            this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.AddButton.Location = new System.Drawing.Point(25, 519);
-            this.AddButton.Margin = new System.Windows.Forms.Padding(2);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(30, 30);
-            this.AddButton.TabIndex = 15;
-            this.AddButton.UseVisualStyleBackColor = false;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
-            // 
-            // EditButton
-            // 
-            this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EditButton.BackColor = System.Drawing.Color.Transparent;
-            this.EditButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditButton.BackgroundImage")));
-            this.EditButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.EditButton.FlatAppearance.BorderSize = 0;
-            this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditButton.Location = new System.Drawing.Point(62, 519);
-            this.EditButton.Margin = new System.Windows.Forms.Padding(2);
-            this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(30, 30);
-            this.EditButton.TabIndex = 16;
-            this.EditButton.UseVisualStyleBackColor = false;
-            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteButton.BackColor = System.Drawing.Color.Transparent;
-            this.DeleteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteButton.BackgroundImage")));
-            this.DeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DeleteButton.FlatAppearance.BorderSize = 0;
-            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteButton.Location = new System.Drawing.Point(97, 519);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(2);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(30, 30);
-            this.DeleteButton.TabIndex = 17;
-            this.DeleteButton.UseVisualStyleBackColor = false;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
-            // 
             // CreatedDateTimePicker
             // 
             this.CreatedDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -313,6 +284,9 @@ namespace NoteApp.View
             // 
             // TextBox
             // 
+            this.TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBox.Location = new System.Drawing.Point(323, 133);
             this.TextBox.MinimumSize = new System.Drawing.Size(659, 416);
             this.TextBox.Multiline = true;
@@ -328,6 +302,55 @@ namespace NoteApp.View
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DeleteButton.BackColor = System.Drawing.Color.Transparent;
+            this.DeleteButton.BackgroundImage = global::NoteApp.View.Properties.Resources.delete;
+            this.DeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DeleteButton.FlatAppearance.BorderSize = 0;
+            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteButton.Location = new System.Drawing.Point(97, 519);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(2);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(30, 30);
+            this.DeleteButton.TabIndex = 17;
+            this.DeleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // EditButton
+            // 
+            this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.EditButton.BackColor = System.Drawing.Color.Transparent;
+            this.EditButton.BackgroundImage = global::NoteApp.View.Properties.Resources.edit;
+            this.EditButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.EditButton.FlatAppearance.BorderSize = 0;
+            this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditButton.Location = new System.Drawing.Point(62, 519);
+            this.EditButton.Margin = new System.Windows.Forms.Padding(2);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(30, 30);
+            this.EditButton.TabIndex = 16;
+            this.EditButton.UseVisualStyleBackColor = false;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
+            // 
+            // AddButton
+            // 
+            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddButton.BackColor = System.Drawing.Color.Transparent;
+            this.AddButton.BackgroundImage = global::NoteApp.View.Properties.Resources.add;
+            this.AddButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddButton.FlatAppearance.BorderSize = 0;
+            this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AddButton.Location = new System.Drawing.Point(25, 519);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(2);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(30, 30);
+            this.AddButton.TabIndex = 15;
+            this.AddButton.UseVisualStyleBackColor = false;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // MainForm
             // 
@@ -347,7 +370,7 @@ namespace NoteApp.View
             this.Controls.Add(this.NoteCategoryLabel);
             this.Controls.Add(this.CategoryLabel);
             this.Controls.Add(this.ShowCategoryLabel);
-            this.Controls.Add(this.ShowComboBox);
+            this.Controls.Add(this.CategoryComboBox);
             this.Controls.Add(this.MainMenuStrip);
             this.Controls.Add(this.TitleListBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -366,7 +389,7 @@ namespace NoteApp.View
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip MainMenuStrip;
+        private new System.Windows.Forms.MenuStrip MainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
@@ -375,7 +398,7 @@ namespace NoteApp.View
         private System.Windows.Forms.ToolStripMenuItem RemoveNoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AboutToolStripMenuItem;
-        private System.Windows.Forms.ComboBox ShowComboBox;
+        private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.Label ShowCategoryLabel;
         private System.Windows.Forms.Label CategoryLabel;
         private System.Windows.Forms.Label NoteCategoryLabel;
@@ -390,6 +413,7 @@ namespace NoteApp.View
         private System.Windows.Forms.ListBox TitleListBox;
         private System.Windows.Forms.TextBox TextBox;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem randomNoteToolStripMenuItem;
     }
 }
 

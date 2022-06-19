@@ -19,7 +19,7 @@ namespace NoteApp.Model
         /// <summary>
         /// Геттеры и сеттеры для сборника заметок
         /// </summary>
-        public List<Note> Projects
+        public List<Note> Notes
         {
             get
             {
@@ -36,7 +36,32 @@ namespace NoteApp.Model
         /// </summary>
         public Project()
         {
-            _notes = new List<Note>();
+            Notes = new List<Note>();
+        }
+
+        /// <summary>
+		/// Функция сортировки всех заметок по убыванию
+		/// </summary>
+		/// <param name="notes">Передаваемый список заметок</param>
+		/// <returns></returns>
+        public List<Note> SortByModificationTime(List<Note> notes)
+        {
+            notes = notes.OrderByDescending(note =>
+                note.ModifiedAt).ToList();
+            return notes;
+        }
+
+        /// <summary>
+		/// Функция выборки всех заметок по передаваемой категории
+		/// </summary>
+		/// <param name="notes">Передаваемый список заметок</param>
+		/// <param name="noteCategory">Передаваемая категория заметки</param>
+		/// <returns></returns>
+		public List<Note> SearchByCategory(List<Note> notes, Category noteCategory)
+        {
+            notes = Notes.Where(note =>
+                note.Category == noteCategory).ToList();
+            return notes;
         }
     }
 }

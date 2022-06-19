@@ -83,6 +83,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\DataSources\NoteApp.Model.Note.datasource" />
     <None Include="Properties\DataSources\NoteApp.Model.Project.datasource" />
@@ -104,6 +105,15 @@
       <Project>{dd70ea52-503e-47ba-b0ee-3ad4e52bc4da}</Project>
       <Name>NoteApp.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\edit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

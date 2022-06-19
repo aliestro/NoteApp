@@ -41,7 +41,7 @@
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.TitleTextBox = new System.Windows.Forms.TextBox();
             this.TextBox = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TitleToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // ModifiedLabel
@@ -175,10 +175,14 @@
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.Size = new System.Drawing.Size(486, 26);
             this.TitleTextBox.TabIndex = 13;
+            this.TitleToolTip.SetToolTip(this.TitleTextBox, "Слишком длинный заголовок");
             this.TitleTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
             // 
             // TextBox
             // 
+            this.TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TextBox.Location = new System.Drawing.Point(11, 118);
             this.TextBox.Multiline = true;
@@ -188,11 +192,11 @@
             this.TextBox.Text = resources.GetString("TextBox.Text");
             this.TextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
-            // contextMenuStrip1
+            // TitleToolTip
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.TitleToolTip.AutoPopDelay = 5000;
+            this.TitleToolTip.InitialDelay = 500;
+            this.TitleToolTip.ReshowDelay = 100;
             // 
             // NoteForm
             // 
@@ -211,10 +215,10 @@
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.CreatedDateTimePicker);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(602, 558);
             this.Name = "NoteForm";
-            this.ShowIcon = false;
             this.Text = "Add/Edit Note";
             this.Load += new System.EventHandler(this.NoteForm_Load);
             this.ResumeLayout(false);
@@ -225,7 +229,7 @@
         #endregion
         private System.Windows.Forms.Label ModifiedLabel;
         private System.Windows.Forms.Button OkButton;
-        private System.Windows.Forms.Button CancelButton;
+        private new System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.DateTimePicker CreatedDateTimePicker;
         private System.Windows.Forms.Label CreatedLabel;
         private System.Windows.Forms.DateTimePicker ModifiedDateTimePicker;
@@ -234,6 +238,6 @@
         private System.Windows.Forms.TextBox TitleTextBox;
         private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.TextBox TextBox;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolTip TitleToolTip;
     }
 }
