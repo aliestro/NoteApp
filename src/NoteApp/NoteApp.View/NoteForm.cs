@@ -72,8 +72,6 @@ namespace NoteApp.View
         private void UpdateNote()
         {
             _noteCopy.Title = TitleTextBox.Text;
-            //_noteCopy.Category = (Category)Enum.Parse(typeof(Category),
-            //    CategoryComboBox.GetItemText(CategoryComboBox.SelectedItem));
             Category selectedCategory = (Category)Enum.Parse(typeof(Category), CategoryComboBox.GetItemText(CategoryComboBox.SelectedItem));
             _noteCopy.Category = selectedCategory;
             _noteCopy.Text = TextBox.Text;
@@ -108,7 +106,6 @@ namespace NoteApp.View
             {
                 _titleError = TitleTextBox.Text;
                 TitleTextBox.BackColor = Color.LightPink;
-                //MessageBox.Show(exception.Message, "Ошибка ввода");
                 TitleToolTip.SetToolTip(TitleTextBox, exception.Message);
             }
         }

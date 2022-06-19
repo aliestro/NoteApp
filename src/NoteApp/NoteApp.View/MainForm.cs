@@ -15,7 +15,6 @@ namespace NoteApp.View
             InitializeComponent();
             CategoryComboBox.SelectedIndex = 0;
             _project = _projectSerializer.LoadFromFile();
-            OutputByCategory();
             UpdateListBox();
         }
         private const string _allCategory = "All";
@@ -78,11 +77,11 @@ namespace NoteApp.View
                 ClearSelectedNote();
                 return;
             }
-            TextBox.Text = _project.Notes[index].Text;
-            TitleLabel.Text = _project.Notes[index].Title;
-            NoteCategoryLabel.Text = _project.Notes[index].Category.ToString();
-            CreatedDateTimePicker.Value = _project.Notes[index].CreatedAt;
-            ModifiedDateTimePicker.Value = _project.Notes[index].ModifiedAt;
+            TextBox.Text = _currentNotes[index].Text;
+            TitleLabel.Text = _currentNotes[index].Title;
+            NoteCategoryLabel.Text = _currentNotes[index].Category.ToString();
+            CreatedDateTimePicker.Value = _currentNotes[index].CreatedAt;
+            ModifiedDateTimePicker.Value = _currentNotes[index].ModifiedAt;
         }
 
         /// <summary>

@@ -30,10 +30,10 @@ namespace NoteApp.Model
         public void SaveToFile(Project project)
         {
             if (!(Directory.Exists(GetFolderPath(SpecialFolder.ApplicationData)
-                + "\\vmi\\NoteApp")))
+                + "\\NoteApp")))
             {
                 Directory.CreateDirectory(GetFolderPath(SpecialFolder.ApplicationData)
-                    + "\\vmi\\NoteApp");
+                    + "\\NoteApp");
                 if (!File.Exists(FileName))
                 {
                     File.Create(FileName);
@@ -58,10 +58,10 @@ namespace NoteApp.Model
         {
             Project project = null;
             if (!(Directory.Exists(GetFolderPath(SpecialFolder.ApplicationData)
-                + "\\vmi\\NoteApp")))
+                + "\\NoteApp")))
             {
                 Directory.CreateDirectory(GetFolderPath(SpecialFolder.ApplicationData)
-                    + "\\vmi\\NoteApp");
+                    + "\\NoteApp");
                 if (!File.Exists(FileName))
                 {
                     File.Create(FileName);
@@ -96,7 +96,7 @@ namespace NoteApp.Model
         public ProjectSerializer()
         {
             FileName = GetFolderPath(SpecialFolder.ApplicationData)
-                    + "\\vmi\\NoteApp\\notes.json";
+                    + "\\NoteApp\\notes.json";
         }
     }
 }
