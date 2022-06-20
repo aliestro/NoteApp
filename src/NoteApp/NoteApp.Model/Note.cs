@@ -120,15 +120,10 @@ namespace NoteApp.Model
         /// <param name="category">Категория заметки.</param>
         /// <param name="text">Текст заметки.</param>
         [JsonConstructor]
-        public Note(string title, Category category = Category.Different,
-            string text = "Без названия")
-        {
-            _title = title;
-            _category = category;
-            _text = text;
-            _createdAt = DateTime.Now;
-            _modifiedAt = DateTime.Now;
-        }
+        public Note(string title, string text, Category category,
+            DateTime createdAt, DateTime modifiedAt) =>
+            (_title, _text, _category, _createdAt, _modifiedAt)
+            = (title, text, category, createdAt, modifiedAt);
 
         /// <summary>
         /// Конструктор заметки
@@ -147,7 +142,7 @@ namespace NoteApp.Model
         /// </summary>
         public object Clone()
         {
-            return new Note(this.Title, this.Category, this.Text);
+            return new Note(this.Title, this.Text, this.Category, this.CreatedAt, this.ModifiedAt);
         }
     }
 }

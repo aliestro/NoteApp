@@ -11,7 +11,7 @@ namespace NoteApp.View
         {
             InitializeComponent();
             CategoryComboBox.SelectedIndex = 6;
-            _note = new Note("Название", Category.Different, "Текст...");
+            _note = new Note();
             UpdateForm();
         }
 
@@ -45,6 +45,7 @@ namespace NoteApp.View
                 if (_note != null)
                 {
                     _noteCopy = (Note)_note.Clone();
+                    
                 }
                 else
                 {
@@ -52,6 +53,7 @@ namespace NoteApp.View
                 }
                 UpdateForm();
             }
+
         }
 
         /// <summary>

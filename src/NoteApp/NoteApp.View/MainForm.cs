@@ -41,7 +41,7 @@ namespace NoteApp.View
         /// <summary>
         /// Закрытое поле типа Project
         /// </summary>
-        private Project _project = new Project();
+        private Project _project;
 
         /// <summary>
         /// Список отображаемых заметок на экране
@@ -59,10 +59,13 @@ namespace NoteApp.View
         private void UpdateListBox()
         {
             TitleListBox.Items.Clear();
-            OutputByCategory();
-            for (int i = 0; i < _currentNotes.Count; ++i)
+            if (_project != null)
             {
-                TitleListBox.Items.Add(_currentNotes[i].Title);
+                OutputByCategory();
+                for (int i = 0; i < _currentNotes.Count; ++i)
+                {
+                    TitleListBox.Items.Add(_currentNotes[i].Title);
+                }
             }
         }
 
@@ -118,7 +121,7 @@ namespace NoteApp.View
             int randomTitle = random.Next(_testTitles.Count);
             int randomText = random.Next(_testText.Count);
             Note newNote = new Note(_testTitles[randomTitle],
-                (Category)randomCategory, _testText[randomText]);
+                 _testText[randomText], (Category)randomCategory, DateTime.Now,DateTime.Now);
             _project.Notes.Add(newNote);
             _projectSerializer.SaveToFile(_project);
         }
@@ -168,7 +171,7 @@ namespace NoteApp.View
                 return;
             }
             int currentIndex = index;
-            Note note = _currentNotes[index];
+            //Note note = _currentNotes[index];
             index = FindNoteIndex(index);
             NoteForm noteForm = new NoteForm();
             noteForm.Note = _project.Notes[index];
@@ -290,7 +293,10 @@ namespace NoteApp.View
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClearSelectedNote();
-            OutputByCategory();
+            if (_project != null)
+            {
+                OutputByCategory();
+            }
             UpdateListBox();
         }
     }

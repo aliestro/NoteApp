@@ -11,25 +11,11 @@ namespace NoteApp.Model
     /// </summary>
     public class Project
     {
+        private List<Note> _notes;
         /// <summary>
         /// Сборник заметок
         /// </summary>
-        private List<Note> _notes;
-
-        /// <summary>
-        /// Геттеры и сеттеры для сборника заметок
-        /// </summary>
-        public List<Note> Notes
-        {
-            get
-            {
-                return _notes;
-            }
-            set
-            {
-                _notes = value;
-            }
-        }
+        public List<Note> Notes { get => _notes; set => _notes = value; }
 
         /// <summary>
         /// Конструктор
