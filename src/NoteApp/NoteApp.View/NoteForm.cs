@@ -45,7 +45,7 @@ namespace NoteApp.View
                 if (_note != null)
                 {
                     _noteCopy = (Note)_note.Clone();
-                    
+
                 }
                 else
                 {
@@ -62,7 +62,7 @@ namespace NoteApp.View
         private void UpdateForm()
         {
             TitleTextBox.Text = _note.Title;
-            CategoryComboBox.SelectedItem = Enum.GetName(typeof(Category),_note.Category);
+            CategoryComboBox.SelectedItem = Enum.GetName(typeof(Category), _note.Category);
             CreatedDateTimePicker.Value = _note.CreatedAt;
             ModifiedDateTimePicker.Value = _note.ModifiedAt;
             TextBox.Text = _note.Text;
