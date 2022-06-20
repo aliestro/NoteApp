@@ -171,7 +171,6 @@ namespace NoteApp.View
                 return;
             }
             int currentIndex = index;
-            //Note note = _currentNotes[index];
             index = FindNoteIndex(index);
             NoteForm noteForm = new NoteForm();
             noteForm.Note = _project.Notes[index];
@@ -246,11 +245,12 @@ namespace NoteApp.View
         /// </summary>
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            int index = TitleListBox.SelectedIndex;
-            if (index == -1)
+            int currentIndex = TitleListBox.SelectedIndex;
+            if (currentIndex == -1)
             {
                 return;
             }
+            int index = FindNoteIndex(currentIndex);
             var _title = _project.Notes[index].Title;
             DialogResult result = MessageBox.Show(@"Do you really wanna remove? " +
                 _title,
