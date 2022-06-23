@@ -52,11 +52,11 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddEditNote.cs">
+    <Compile Include="NoteForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddEditNote.Designer.cs">
-      <DependentUpon>AddEditNote.cs</DependentUpon>
+    <Compile Include="NoteForm.Designer.cs">
+      <DependentUpon>NoteForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -69,8 +69,8 @@
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddEditNote.resx">
-      <DependentUpon>AddEditNote.cs</DependentUpon>
+    <EmbeddedResource Include="NoteForm.resx">
+      <DependentUpon>NoteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -83,7 +83,10 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\NoteApp.Model.Note.datasource" />
+    <None Include="Properties\DataSources\NoteApp.Model.Project.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,6 +99,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NoteApp.Model\NoteApp.Model.csproj">
+      <Project>{dd70ea52-503e-47ba-b0ee-3ad4e52bc4da}</Project>
+      <Name>NoteApp.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\edit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

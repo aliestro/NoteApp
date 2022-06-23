@@ -1,6 +1,6 @@
 ﻿namespace NoteApp.View
 {
-    partial class AddEditNote
+    partial class NoteForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditNote));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoteForm));
             this.ModifiedLabel = new System.Windows.Forms.Label();
             this.OkButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
@@ -37,9 +38,10 @@
             this.CreatedLabel = new System.Windows.Forms.Label();
             this.ModifiedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.TitleLable = new System.Windows.Forms.Label();
-            this.MainRichTextBox = new System.Windows.Forms.RichTextBox();
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.TitleTextBox = new System.Windows.Forms.TextBox();
+            this.TextBox = new System.Windows.Forms.TextBox();
+            this.TitleToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // ModifiedLabel
@@ -65,6 +67,7 @@
             this.OkButton.TabIndex = 11;
             this.OkButton.Text = "OK";
             this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // CancelButton
             // 
@@ -76,6 +79,7 @@
             this.CancelButton.TabIndex = 12;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // CreatedDateTimePicker
             // 
@@ -92,8 +96,18 @@
             // 
             this.CategoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.CategoryComboBox.BackColor = System.Drawing.SystemColors.Window;
+            this.CategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CategoryComboBox.FormattingEnabled = true;
+            this.CategoryComboBox.Items.AddRange(new object[] {
+            "Job",
+            "House",
+            "HealthAndSports",
+            "Peoples",
+            "Documents",
+            "Finance",
+            "Different"});
             this.CategoryComboBox.Location = new System.Drawing.Point(85, 47);
             this.CategoryComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.CategoryComboBox.Name = "CategoryComboBox";
@@ -138,19 +152,6 @@
             this.TitleLable.TabIndex = 0;
             this.TitleLable.Text = "Title:";
             // 
-            // MainRichTextBox
-            // 
-            this.MainRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MainRichTextBox.Location = new System.Drawing.Point(11, 118);
-            this.MainRichTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.MainRichTextBox.Name = "MainRichTextBox";
-            this.MainRichTextBox.Size = new System.Drawing.Size(560, 350);
-            this.MainRichTextBox.TabIndex = 10;
-            this.MainRichTextBox.Text = resources.GetString("MainRichTextBox.Text");
-            // 
             // CategoryLabel
             // 
             this.CategoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -174,29 +175,52 @@
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.Size = new System.Drawing.Size(486, 26);
             this.TitleTextBox.TabIndex = 13;
+            this.TitleToolTip.SetToolTip(this.TitleTextBox, "Слишком длинный заголовок");
             this.TitleTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
             // 
-            // AddEditNote
+            // TextBox
+            // 
+            this.TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.TextBox.Location = new System.Drawing.Point(11, 118);
+            this.TextBox.Multiline = true;
+            this.TextBox.Name = "TextBox";
+            this.TextBox.Size = new System.Drawing.Size(560, 350);
+            this.TextBox.TabIndex = 14;
+            this.TextBox.Text = resources.GetString("TextBox.Text");
+            this.TextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            // 
+            // TitleToolTip
+            // 
+            this.TitleToolTip.AutoPopDelay = 5000;
+            this.TitleToolTip.InitialDelay = 500;
+            this.TitleToolTip.ReshowDelay = 100;
+            // 
+            // NoteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 511);
+            this.Controls.Add(this.TextBox);
             this.Controls.Add(this.ModifiedDateTimePicker);
             this.Controls.Add(this.TitleTextBox);
             this.Controls.Add(this.CategoryLabel);
             this.Controls.Add(this.ModifiedLabel);
             this.Controls.Add(this.TitleLable);
-            this.Controls.Add(this.MainRichTextBox);
             this.Controls.Add(this.CreatedLabel);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.CategoryComboBox);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.CreatedDateTimePicker);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "AddEditNote";
-            this.ShowIcon = false;
+            this.MinimumSize = new System.Drawing.Size(602, 558);
+            this.Name = "NoteForm";
             this.Text = "Add/Edit Note";
+            this.Load += new System.EventHandler(this.NoteForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,14 +229,15 @@
         #endregion
         private System.Windows.Forms.Label ModifiedLabel;
         private System.Windows.Forms.Button OkButton;
-        private System.Windows.Forms.Button CancelButton;
+        private new System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.DateTimePicker CreatedDateTimePicker;
-        private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.Label CreatedLabel;
         private System.Windows.Forms.DateTimePicker ModifiedDateTimePicker;
         private System.Windows.Forms.Label TitleLable;
-        private System.Windows.Forms.RichTextBox MainRichTextBox;
         private System.Windows.Forms.Label CategoryLabel;
         private System.Windows.Forms.TextBox TitleTextBox;
+        private System.Windows.Forms.ComboBox CategoryComboBox;
+        private System.Windows.Forms.TextBox TextBox;
+        private System.Windows.Forms.ToolTip TitleToolTip;
     }
 }
