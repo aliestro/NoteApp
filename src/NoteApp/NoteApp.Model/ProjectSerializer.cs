@@ -56,7 +56,6 @@ namespace NoteApp.Model
         /// <returns>Инициализированный экземпляр класса Project.</returns>
         public Project LoadFromFile()
         {
-
             Project project = null;
             if (!(Directory.Exists(GetFolderPath(SpecialFolder.ApplicationData)
                 + "\\NoteApp")))
