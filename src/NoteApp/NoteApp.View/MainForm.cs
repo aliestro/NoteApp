@@ -22,13 +22,13 @@ namespace NoteApp.View
         /// <summary>
         /// Названия заметок для случайной генерации
         /// </summary>
-        List<string> _testTitles = new List<string> { "Томск", "Работа", "Отдых",
+        private List<string> _testTitles = new List<string> { "Томск", "Работа", "Отдых",
             "Творчество", "Техника", "Фильмы" };
 
         /// <summary>
         /// Текст заметок для случайной генерации
         /// </summary>
-        List<string> _testText = new List<string> {"Lorem ipsum dolor sit amet, " +
+        private List<string> _testText = new List<string> {"Lorem ipsum dolor sit amet, " +
             "consectetur adipiscing elit, sed do",
             " eiusmod tempor incididunt ut labore et dolore magna aliqua " +
             "Ut enim ad minim veniam, quis nostrud exercitation ullamco",
